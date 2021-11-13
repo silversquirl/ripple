@@ -1,0 +1,46 @@
+//// Vertex stage ////
+
+entry fn vertex(in: VertIn, mvp: ref[uniform=0] [4x4]f32) VertOut {
+	return .{
+		.frag = .{
+			.uv = in.uv,
+			.mtl = in.mtl,
+		},
+		.pos = mvp * in.pos,
+	};
+}
+
+type VertIn = struct {
+	pos: ref[input=0] [3x1]f32, // Vertex position
+	uv: ref[input=1] [2x1]f32, // Texture coordinates
+	mtl: ref[input=2] u32, // Material index
+};
+
+type VertOut = struct {
+	frag: ref[output=0] FragIn, // Fragment inputs
+	pos: ref[builtin=position] [4x1]f32, // Vertex position
+};
+
+//// Fragment stage ////
+
+entry fn fragment(in: ref[input=0] FragIn, mtls: ref[uniform_const=0] []Material) [4x1]f32{
+	if (in.mtl >= mtls.len) {
+		return .{1, 1, 1, 1};
+	}
+
+	const mtl = mtls[in.mtl];
+	var color = mtl.tex.sample(in.uv);
+	color *= mtl.tint;
+	return color;
+}
+
+type FragIn = struct {
+	uv: [2x1]f32, // Texture coordinates - uses smooth shading (default)
+	mtl: flat u32, // Material index - uses flat shading
+	// NOTE: If a flat type is never used as an output, it will be a compile error
+};
+
+type Material = struct {
+	tex: view[[2x1]f32] [4x1]f32,
+	tint: [4x1]f32,
+};
