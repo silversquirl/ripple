@@ -26,7 +26,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn source_continued(self: *spirv.Builder, arg0: LiteralString) !void {
+    pub fn sourceContinued(self: *spirv.Builder, arg0: LiteralString) !void {
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
         try spirv.Builder.writeOperand(&operands, LiteralString, arg0);
@@ -49,7 +49,7 @@ pub const instructions = struct {
         });
     }
 
-    pub fn source_extension(self: *spirv.Builder, arg0: LiteralString) !void {
+    pub fn sourceExtension(self: *spirv.Builder, arg0: LiteralString) !void {
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
         try spirv.Builder.writeOperand(&operands, LiteralString, arg0);
@@ -70,7 +70,7 @@ pub const instructions = struct {
         });
     }
 
-    pub fn member_name(self: *spirv.Builder, arg0: IdRef, arg1: LiteralInteger, arg2: LiteralString) !void {
+    pub fn memberName(self: *spirv.Builder, arg0: IdRef, arg1: LiteralInteger, arg2: LiteralString) !void {
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
@@ -117,7 +117,7 @@ pub const instructions = struct {
         });
     }
 
-    pub fn ext_inst_import(self: *spirv.Builder, arg0: LiteralString) !spirv.Id {
+    pub fn extInstImport(self: *spirv.Builder, arg0: LiteralString) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -130,7 +130,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn ext_inst(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: LiteralExtInstInteger, arg2: []const IdRef) !spirv.Id {
+    pub fn extInst(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: LiteralExtInstInteger, arg2: []const IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -146,7 +146,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn memory_model(self: *spirv.Builder, arg0: AddressingModel, arg1: MemoryModel) !void {
+    pub fn memoryModel(self: *spirv.Builder, arg0: AddressingModel, arg1: MemoryModel) !void {
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
         try spirv.Builder.writeOperand(&operands, AddressingModel, arg0);
@@ -157,7 +157,7 @@ pub const instructions = struct {
         });
     }
 
-    pub fn entry_point(self: *spirv.Builder, arg0: ExecutionModel, arg1: IdRef, arg2: LiteralString, arg3: []const IdRef) !void {
+    pub fn entryPoint(self: *spirv.Builder, arg0: ExecutionModel, arg1: IdRef, arg2: LiteralString, arg3: []const IdRef) !void {
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
         try spirv.Builder.writeOperand(&operands, ExecutionModel, arg0);
@@ -170,7 +170,7 @@ pub const instructions = struct {
         });
     }
 
-    pub fn execution_mode(self: *spirv.Builder, arg0: IdRef, arg1: ExecutionMode) !void {
+    pub fn executionMode(self: *spirv.Builder, arg0: IdRef, arg1: ExecutionMode) !void {
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
@@ -191,7 +191,7 @@ pub const instructions = struct {
         });
     }
 
-    pub fn type_void(self: *spirv.Builder) !spirv.Id {
+    pub fn typeVoid(self: *spirv.Builder) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -203,7 +203,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn type_bool(self: *spirv.Builder) !spirv.Id {
+    pub fn typeBool(self: *spirv.Builder) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -215,7 +215,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn type_int(self: *spirv.Builder, arg0: LiteralInteger, arg1: LiteralInteger) !spirv.Id {
+    pub fn typeInt(self: *spirv.Builder, arg0: LiteralInteger, arg1: LiteralInteger) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -229,7 +229,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn type_float(self: *spirv.Builder, arg0: LiteralInteger) !spirv.Id {
+    pub fn typeFloat(self: *spirv.Builder, arg0: LiteralInteger) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -242,7 +242,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn type_vector(self: *spirv.Builder, arg0: IdRef, arg1: LiteralInteger) !spirv.Id {
+    pub fn typeVector(self: *spirv.Builder, arg0: IdRef, arg1: LiteralInteger) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -256,7 +256,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn type_matrix(self: *spirv.Builder, arg0: IdRef, arg1: LiteralInteger) !spirv.Id {
+    pub fn typeMatrix(self: *spirv.Builder, arg0: IdRef, arg1: LiteralInteger) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -270,7 +270,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn type_image(self: *spirv.Builder, arg0: IdRef, arg1: Dim, arg2: LiteralInteger, arg3: LiteralInteger, arg4: LiteralInteger, arg5: LiteralInteger, arg6: ImageFormat, arg7: ?AccessQualifier) !spirv.Id {
+    pub fn typeImage(self: *spirv.Builder, arg0: IdRef, arg1: Dim, arg2: LiteralInteger, arg3: LiteralInteger, arg4: LiteralInteger, arg5: LiteralInteger, arg6: ImageFormat, arg7: ?AccessQualifier) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -290,7 +290,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn type_sampler(self: *spirv.Builder) !spirv.Id {
+    pub fn typeSampler(self: *spirv.Builder) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -302,7 +302,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn type_sampled_image(self: *spirv.Builder, arg0: IdRef) !spirv.Id {
+    pub fn typeSampledImage(self: *spirv.Builder, arg0: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -315,7 +315,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn type_array(self: *spirv.Builder, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn typeArray(self: *spirv.Builder, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -329,7 +329,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn type_runtime_array(self: *spirv.Builder, arg0: IdRef) !spirv.Id {
+    pub fn typeRuntimeArray(self: *spirv.Builder, arg0: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -342,7 +342,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn type_struct(self: *spirv.Builder, arg0: []const IdRef) !spirv.Id {
+    pub fn typeStruct(self: *spirv.Builder, arg0: []const IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -355,7 +355,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn type_opaque(self: *spirv.Builder, arg0: LiteralString) !spirv.Id {
+    pub fn typeOpaque(self: *spirv.Builder, arg0: LiteralString) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -368,7 +368,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn type_pointer(self: *spirv.Builder, arg0: StorageClass, arg1: IdRef) !spirv.Id {
+    pub fn typePointer(self: *spirv.Builder, arg0: StorageClass, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -382,7 +382,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn type_function(self: *spirv.Builder, arg0: IdRef, arg1: []const IdRef) !spirv.Id {
+    pub fn typeFunction(self: *spirv.Builder, arg0: IdRef, arg1: []const IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -396,7 +396,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn type_event(self: *spirv.Builder) !spirv.Id {
+    pub fn typeEvent(self: *spirv.Builder) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -408,7 +408,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn type_device_event(self: *spirv.Builder) !spirv.Id {
+    pub fn typeDeviceEvent(self: *spirv.Builder) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -420,7 +420,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn type_reserve_id(self: *spirv.Builder) !spirv.Id {
+    pub fn typeReserveId(self: *spirv.Builder) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -432,7 +432,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn type_queue(self: *spirv.Builder) !spirv.Id {
+    pub fn typeQueue(self: *spirv.Builder) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -444,7 +444,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn type_pipe(self: *spirv.Builder, arg0: AccessQualifier) !spirv.Id {
+    pub fn typePipe(self: *spirv.Builder, arg0: AccessQualifier) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -457,7 +457,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn type_forward_pointer(self: *spirv.Builder, arg0: IdRef, arg1: StorageClass) !void {
+    pub fn typeForwardPointer(self: *spirv.Builder, arg0: IdRef, arg1: StorageClass) !void {
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
@@ -468,7 +468,7 @@ pub const instructions = struct {
         });
     }
 
-    pub fn constant_true(self: *spirv.Builder, result_type: spirv.Id) !spirv.Id {
+    pub fn constantTrue(self: *spirv.Builder, result_type: spirv.Id) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -481,7 +481,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn constant_false(self: *spirv.Builder, result_type: spirv.Id) !spirv.Id {
+    pub fn constantFalse(self: *spirv.Builder, result_type: spirv.Id) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -508,7 +508,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn constant_composite(self: *spirv.Builder, result_type: spirv.Id, arg0: []const IdRef) !spirv.Id {
+    pub fn constantComposite(self: *spirv.Builder, result_type: spirv.Id, arg0: []const IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -522,7 +522,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn constant_sampler(self: *spirv.Builder, result_type: spirv.Id, arg0: SamplerAddressingMode, arg1: LiteralInteger, arg2: SamplerFilterMode) !spirv.Id {
+    pub fn constantSampler(self: *spirv.Builder, result_type: spirv.Id, arg0: SamplerAddressingMode, arg1: LiteralInteger, arg2: SamplerFilterMode) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -538,7 +538,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn constant_null(self: *spirv.Builder, result_type: spirv.Id) !spirv.Id {
+    pub fn constantNull(self: *spirv.Builder, result_type: spirv.Id) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -551,7 +551,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn spec_constant_true(self: *spirv.Builder, result_type: spirv.Id) !spirv.Id {
+    pub fn specConstantTrue(self: *spirv.Builder, result_type: spirv.Id) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -564,7 +564,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn spec_constant_false(self: *spirv.Builder, result_type: spirv.Id) !spirv.Id {
+    pub fn specConstantFalse(self: *spirv.Builder, result_type: spirv.Id) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -577,7 +577,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn spec_constant(self: *spirv.Builder, result_type: spirv.Id, arg0: LiteralContextDependentNumber) !spirv.Id {
+    pub fn specConstant(self: *spirv.Builder, result_type: spirv.Id, arg0: LiteralContextDependentNumber) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -591,7 +591,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn spec_constant_composite(self: *spirv.Builder, result_type: spirv.Id, arg0: []const IdRef) !spirv.Id {
+    pub fn specConstantComposite(self: *spirv.Builder, result_type: spirv.Id, arg0: []const IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -605,7 +605,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn spec_constant_op(self: *spirv.Builder, result_type: spirv.Id, arg0: LiteralSpecConstantOpInteger) !spirv.Id {
+    pub fn specConstantOp(self: *spirv.Builder, result_type: spirv.Id, arg0: LiteralSpecConstantOpInteger) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -634,7 +634,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn function_parameter(self: *spirv.Builder, result_type: spirv.Id) !spirv.Id {
+    pub fn functionParameter(self: *spirv.Builder, result_type: spirv.Id) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -647,7 +647,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn function_end(self: *spirv.Builder) !void {
+    pub fn functionEnd(self: *spirv.Builder) !void {
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
         try self.insns.append(self.allocator, .{
@@ -656,7 +656,7 @@ pub const instructions = struct {
         });
     }
 
-    pub fn function_call(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: []const IdRef) !spirv.Id {
+    pub fn functionCall(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: []const IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -686,7 +686,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn image_texel_pointer(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef) !spirv.Id {
+    pub fn imageTexelPointer(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -729,7 +729,7 @@ pub const instructions = struct {
         });
     }
 
-    pub fn copy_memory(self: *spirv.Builder, arg0: IdRef, arg1: IdRef, arg2: ?MemoryAccess) !void {
+    pub fn copyMemory(self: *spirv.Builder, arg0: IdRef, arg1: IdRef, arg2: ?MemoryAccess) !void {
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
@@ -741,7 +741,7 @@ pub const instructions = struct {
         });
     }
 
-    pub fn copy_memory_sized(self: *spirv.Builder, arg0: IdRef, arg1: IdRef, arg2: IdRef, arg3: ?MemoryAccess) !void {
+    pub fn copyMemorySized(self: *spirv.Builder, arg0: IdRef, arg1: IdRef, arg2: IdRef, arg3: ?MemoryAccess) !void {
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
@@ -754,7 +754,7 @@ pub const instructions = struct {
         });
     }
 
-    pub fn access_chain(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: []const IdRef) !spirv.Id {
+    pub fn accessChain(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: []const IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -769,7 +769,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn in_bounds_access_chain(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: []const IdRef) !spirv.Id {
+    pub fn inBoundsAccessChain(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: []const IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -784,7 +784,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn ptr_access_chain(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: []const IdRef) !spirv.Id {
+    pub fn ptrAccessChain(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: []const IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -800,7 +800,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn array_length(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: LiteralInteger) !spirv.Id {
+    pub fn arrayLength(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: LiteralInteger) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -815,7 +815,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn generic_ptr_mem_semantics(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
+    pub fn genericPtrMemSemantics(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -829,7 +829,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn in_bounds_ptr_access_chain(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: []const IdRef) !spirv.Id {
+    pub fn inBoundsPtrAccessChain(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: []const IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -856,7 +856,7 @@ pub const instructions = struct {
         });
     }
 
-    pub fn member_decorate(self: *spirv.Builder, arg0: IdRef, arg1: LiteralInteger, arg2: Decoration) !void {
+    pub fn memberDecorate(self: *spirv.Builder, arg0: IdRef, arg1: LiteralInteger, arg2: Decoration) !void {
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
@@ -868,7 +868,7 @@ pub const instructions = struct {
         });
     }
 
-    pub fn decoration_group(self: *spirv.Builder) !spirv.Id {
+    pub fn decorationGroup(self: *spirv.Builder) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -880,7 +880,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn group_decorate(self: *spirv.Builder, arg0: IdRef, arg1: []const IdRef) !void {
+    pub fn groupDecorate(self: *spirv.Builder, arg0: IdRef, arg1: []const IdRef) !void {
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
@@ -891,7 +891,7 @@ pub const instructions = struct {
         });
     }
 
-    pub fn group_member_decorate(self: *spirv.Builder, arg0: IdRef, arg1: []const PairIdRefLiteralInteger) !void {
+    pub fn groupMemberDecorate(self: *spirv.Builder, arg0: IdRef, arg1: []const PairIdRefLiteralInteger) !void {
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
@@ -902,7 +902,7 @@ pub const instructions = struct {
         });
     }
 
-    pub fn vector_extract_dynamic(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn vectorExtractDynamic(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -917,7 +917,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn vector_insert_dynamic(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef) !spirv.Id {
+    pub fn vectorInsertDynamic(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -933,7 +933,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn vector_shuffle(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: []const LiteralInteger) !spirv.Id {
+    pub fn vectorShuffle(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: []const LiteralInteger) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -949,7 +949,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn composite_construct(self: *spirv.Builder, result_type: spirv.Id, arg0: []const IdRef) !spirv.Id {
+    pub fn compositeConstruct(self: *spirv.Builder, result_type: spirv.Id, arg0: []const IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -963,7 +963,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn composite_extract(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: []const LiteralInteger) !spirv.Id {
+    pub fn compositeExtract(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: []const LiteralInteger) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -978,7 +978,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn composite_insert(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: []const LiteralInteger) !spirv.Id {
+    pub fn compositeInsert(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: []const LiteralInteger) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -994,7 +994,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn copy_object(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
+    pub fn copyObject(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1022,7 +1022,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn sampled_image(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn sampledImage(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1037,7 +1037,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn image_sample_implicit_lod(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: ?ImageOperands) !spirv.Id {
+    pub fn imageSampleImplicitLod(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: ?ImageOperands) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1053,7 +1053,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn image_sample_explicit_lod(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: ImageOperands) !spirv.Id {
+    pub fn imageSampleExplicitLod(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: ImageOperands) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1069,7 +1069,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn image_sample_dref_implicit_lod(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef, arg3: ?ImageOperands) !spirv.Id {
+    pub fn imageSampleDrefImplicitLod(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef, arg3: ?ImageOperands) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1086,7 +1086,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn image_sample_dref_explicit_lod(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef, arg3: ImageOperands) !spirv.Id {
+    pub fn imageSampleDrefExplicitLod(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef, arg3: ImageOperands) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1103,7 +1103,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn image_sample_proj_implicit_lod(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: ?ImageOperands) !spirv.Id {
+    pub fn imageSampleProjImplicitLod(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: ?ImageOperands) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1119,7 +1119,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn image_sample_proj_explicit_lod(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: ImageOperands) !spirv.Id {
+    pub fn imageSampleProjExplicitLod(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: ImageOperands) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1135,7 +1135,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn image_sample_proj_dref_implicit_lod(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef, arg3: ?ImageOperands) !spirv.Id {
+    pub fn imageSampleProjDrefImplicitLod(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef, arg3: ?ImageOperands) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1152,7 +1152,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn image_sample_proj_dref_explicit_lod(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef, arg3: ImageOperands) !spirv.Id {
+    pub fn imageSampleProjDrefExplicitLod(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef, arg3: ImageOperands) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1169,7 +1169,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn image_fetch(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: ?ImageOperands) !spirv.Id {
+    pub fn imageFetch(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: ?ImageOperands) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1185,7 +1185,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn image_gather(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef, arg3: ?ImageOperands) !spirv.Id {
+    pub fn imageGather(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef, arg3: ?ImageOperands) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1202,7 +1202,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn image_dref_gather(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef, arg3: ?ImageOperands) !spirv.Id {
+    pub fn imageDrefGather(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef, arg3: ?ImageOperands) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1219,7 +1219,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn image_read(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: ?ImageOperands) !spirv.Id {
+    pub fn imageRead(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: ?ImageOperands) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1235,7 +1235,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn image_write(self: *spirv.Builder, arg0: IdRef, arg1: IdRef, arg2: IdRef, arg3: ?ImageOperands) !void {
+    pub fn imageWrite(self: *spirv.Builder, arg0: IdRef, arg1: IdRef, arg2: IdRef, arg3: ?ImageOperands) !void {
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
@@ -1262,7 +1262,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn image_query_format(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
+    pub fn imageQueryFormat(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1276,7 +1276,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn image_query_order(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
+    pub fn imageQueryOrder(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1290,7 +1290,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn image_query_size_lod(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn imageQuerySizeLod(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1305,7 +1305,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn image_query_size(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
+    pub fn imageQuerySize(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1319,7 +1319,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn image_query_lod(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn imageQueryLod(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1334,7 +1334,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn image_query_levels(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
+    pub fn imageQueryLevels(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1348,7 +1348,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn image_query_samples(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
+    pub fn imageQuerySamples(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1362,7 +1362,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn convert_f_to_u(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
+    pub fn convertFToU(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1376,7 +1376,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn convert_f_to_s(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
+    pub fn convertFToS(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1390,7 +1390,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn convert_s_to_f(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
+    pub fn convertSToF(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1404,7 +1404,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn convert_u_to_f(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
+    pub fn convertUToF(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1418,7 +1418,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn u_convert(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
+    pub fn uConvert(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1432,7 +1432,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn s_convert(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
+    pub fn sConvert(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1446,7 +1446,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn f_convert(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
+    pub fn fConvert(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1460,7 +1460,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn quantize_to_f16(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
+    pub fn quantizeToF16(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1474,7 +1474,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn convert_ptr_to_u(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
+    pub fn convertPtrToU(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1488,7 +1488,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn sat_convert_s_to_u(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
+    pub fn satConvertSToU(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1502,7 +1502,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn sat_convert_u_to_s(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
+    pub fn satConvertUToS(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1516,7 +1516,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn convert_u_to_ptr(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
+    pub fn convertUToPtr(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1530,7 +1530,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn ptr_cast_to_generic(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
+    pub fn ptrCastToGeneric(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1544,7 +1544,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn generic_cast_to_ptr(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
+    pub fn genericCastToPtr(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1558,7 +1558,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn generic_cast_to_ptr_explicit(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: StorageClass) !spirv.Id {
+    pub fn genericCastToPtrExplicit(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: StorageClass) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1587,7 +1587,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn s_negate(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
+    pub fn sNegate(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1601,7 +1601,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn f_negate(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
+    pub fn fNegate(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1615,7 +1615,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn i_add(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn iAdd(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1630,7 +1630,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn f_add(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn fAdd(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1645,7 +1645,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn i_sub(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn iSub(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1660,7 +1660,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn f_sub(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn fSub(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1675,7 +1675,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn i_mul(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn iMul(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1690,7 +1690,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn f_mul(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn fMul(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1705,7 +1705,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn u_div(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn uDiv(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1720,7 +1720,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn s_div(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn sDiv(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1735,7 +1735,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn f_div(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn fDiv(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1750,7 +1750,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn u_mod(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn uMod(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1765,7 +1765,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn s_rem(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn sRem(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1780,7 +1780,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn s_mod(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn sMod(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1795,7 +1795,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn f_rem(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn fRem(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1810,7 +1810,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn f_mod(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn fMod(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1825,7 +1825,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn vector_times_scalar(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn vectorTimesScalar(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1840,7 +1840,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn matrix_times_scalar(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn matrixTimesScalar(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1855,7 +1855,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn vector_times_matrix(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn vectorTimesMatrix(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1870,7 +1870,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn matrix_times_vector(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn matrixTimesVector(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1885,7 +1885,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn matrix_times_matrix(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn matrixTimesMatrix(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1900,7 +1900,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn outer_product(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn outerProduct(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1930,7 +1930,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn i_add_carry(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn iAddCarry(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1945,7 +1945,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn i_sub_borrow(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn iSubBorrow(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1960,7 +1960,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn u_mul_extended(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn uMulExtended(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -1975,7 +1975,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn s_mul_extended(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn sMulExtended(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -2018,7 +2018,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn is_nan(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
+    pub fn isNan(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -2032,7 +2032,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn is_inf(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
+    pub fn isInf(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -2046,7 +2046,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn is_finite(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
+    pub fn isFinite(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -2060,7 +2060,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn is_normal(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
+    pub fn isNormal(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -2074,7 +2074,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn sign_bit_set(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
+    pub fn signBitSet(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -2088,7 +2088,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn less_or_greater(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn lessOrGreater(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -2133,7 +2133,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn logical_equal(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn logicalEqual(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -2148,7 +2148,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn logical_not_equal(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn logicalNotEqual(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -2163,7 +2163,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn logical_or(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn logicalOr(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -2178,7 +2178,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn logical_and(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn logicalAnd(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -2193,7 +2193,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn logical_not(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
+    pub fn logicalNot(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -2223,7 +2223,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn i_equal(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn iEqual(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -2238,7 +2238,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn i_not_equal(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn iNotEqual(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -2253,7 +2253,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn u_greater_than(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn uGreaterThan(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -2268,7 +2268,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn s_greater_than(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn sGreaterThan(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -2283,7 +2283,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn u_greater_than_equal(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn uGreaterThanEqual(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -2298,7 +2298,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn s_greater_than_equal(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn sGreaterThanEqual(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -2313,7 +2313,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn u_less_than(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn uLessThan(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -2328,7 +2328,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn s_less_than(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn sLessThan(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -2343,7 +2343,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn u_less_than_equal(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn uLessThanEqual(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -2358,7 +2358,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn s_less_than_equal(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn sLessThanEqual(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -2373,7 +2373,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn f_ord_equal(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn fOrdEqual(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -2388,7 +2388,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn f_unord_equal(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn fUnordEqual(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -2403,7 +2403,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn f_ord_not_equal(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn fOrdNotEqual(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -2418,7 +2418,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn f_unord_not_equal(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn fUnordNotEqual(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -2433,7 +2433,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn f_ord_less_than(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn fOrdLessThan(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -2448,7 +2448,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn f_unord_less_than(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn fUnordLessThan(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -2463,7 +2463,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn f_ord_greater_than(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn fOrdGreaterThan(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -2478,7 +2478,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn f_unord_greater_than(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn fUnordGreaterThan(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -2493,7 +2493,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn f_ord_less_than_equal(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn fOrdLessThanEqual(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -2508,7 +2508,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn f_unord_less_than_equal(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn fUnordLessThanEqual(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -2523,7 +2523,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn f_ord_greater_than_equal(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn fOrdGreaterThanEqual(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -2538,7 +2538,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn f_unord_greater_than_equal(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn fUnordGreaterThanEqual(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -2553,7 +2553,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn shift_right_logical(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn shiftRightLogical(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -2568,7 +2568,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn shift_right_arithmetic(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn shiftRightArithmetic(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -2583,7 +2583,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn shift_left_logical(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn shiftLeftLogical(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -2598,7 +2598,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn bitwise_or(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn bitwiseOr(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -2613,7 +2613,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn bitwise_xor(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn bitwiseXor(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -2628,7 +2628,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn bitwise_and(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn bitwiseAnd(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -2657,7 +2657,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn bit_field_insert(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef, arg3: IdRef) !spirv.Id {
+    pub fn bitFieldInsert(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef, arg3: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -2674,7 +2674,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn bit_field_s_extract(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef) !spirv.Id {
+    pub fn bitFieldSExtract(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -2690,7 +2690,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn bit_field_u_extract(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef) !spirv.Id {
+    pub fn bitFieldUExtract(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -2706,7 +2706,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn bit_reverse(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
+    pub fn bitReverse(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -2720,7 +2720,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn bit_count(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
+    pub fn bitCount(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -2734,7 +2734,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn d_pdx(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
+    pub fn dPdx(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -2748,7 +2748,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn d_pdy(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
+    pub fn dPdy(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -2776,7 +2776,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn d_pdx_fine(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
+    pub fn dPdxFine(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -2790,7 +2790,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn d_pdy_fine(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
+    pub fn dPdyFine(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -2804,7 +2804,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn fwidth_fine(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
+    pub fn fwidthFine(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -2818,7 +2818,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn d_pdx_coarse(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
+    pub fn dPdxCoarse(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -2832,7 +2832,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn d_pdy_coarse(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
+    pub fn dPdyCoarse(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -2846,7 +2846,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn fwidth_coarse(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
+    pub fn fwidthCoarse(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -2860,7 +2860,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn emit_vertex(self: *spirv.Builder) !void {
+    pub fn emitVertex(self: *spirv.Builder) !void {
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
         try self.insns.append(self.allocator, .{
@@ -2869,7 +2869,7 @@ pub const instructions = struct {
         });
     }
 
-    pub fn end_primitive(self: *spirv.Builder) !void {
+    pub fn endPrimitive(self: *spirv.Builder) !void {
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
         try self.insns.append(self.allocator, .{
@@ -2878,7 +2878,7 @@ pub const instructions = struct {
         });
     }
 
-    pub fn emit_stream_vertex(self: *spirv.Builder, arg0: IdRef) !void {
+    pub fn emitStreamVertex(self: *spirv.Builder, arg0: IdRef) !void {
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
@@ -2888,7 +2888,7 @@ pub const instructions = struct {
         });
     }
 
-    pub fn end_stream_primitive(self: *spirv.Builder, arg0: IdRef) !void {
+    pub fn endStreamPrimitive(self: *spirv.Builder, arg0: IdRef) !void {
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
@@ -2898,7 +2898,7 @@ pub const instructions = struct {
         });
     }
 
-    pub fn control_barrier(self: *spirv.Builder, arg0: IdScope, arg1: IdScope, arg2: IdMemorySemantics) !void {
+    pub fn controlBarrier(self: *spirv.Builder, arg0: IdScope, arg1: IdScope, arg2: IdMemorySemantics) !void {
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
         try spirv.Builder.writeOperand(&operands, IdScope, arg0);
@@ -2910,7 +2910,7 @@ pub const instructions = struct {
         });
     }
 
-    pub fn memory_barrier(self: *spirv.Builder, arg0: IdScope, arg1: IdMemorySemantics) !void {
+    pub fn memoryBarrier(self: *spirv.Builder, arg0: IdScope, arg1: IdMemorySemantics) !void {
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
         try spirv.Builder.writeOperand(&operands, IdScope, arg0);
@@ -2921,7 +2921,7 @@ pub const instructions = struct {
         });
     }
 
-    pub fn atomic_load(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdScope, arg2: IdMemorySemantics) !spirv.Id {
+    pub fn atomicLoad(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdScope, arg2: IdMemorySemantics) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -2937,7 +2937,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn atomic_store(self: *spirv.Builder, arg0: IdRef, arg1: IdScope, arg2: IdMemorySemantics, arg3: IdRef) !void {
+    pub fn atomicStore(self: *spirv.Builder, arg0: IdRef, arg1: IdScope, arg2: IdMemorySemantics, arg3: IdRef) !void {
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
@@ -2950,7 +2950,7 @@ pub const instructions = struct {
         });
     }
 
-    pub fn atomic_exchange(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdScope, arg2: IdMemorySemantics, arg3: IdRef) !spirv.Id {
+    pub fn atomicExchange(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdScope, arg2: IdMemorySemantics, arg3: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -2967,7 +2967,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn atomic_compare_exchange(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdScope, arg2: IdMemorySemantics, arg3: IdMemorySemantics, arg4: IdRef, arg5: IdRef) !spirv.Id {
+    pub fn atomicCompareExchange(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdScope, arg2: IdMemorySemantics, arg3: IdMemorySemantics, arg4: IdRef, arg5: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -2986,7 +2986,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn atomic_compare_exchange_weak(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdScope, arg2: IdMemorySemantics, arg3: IdMemorySemantics, arg4: IdRef, arg5: IdRef) !spirv.Id {
+    pub fn atomicCompareExchangeWeak(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdScope, arg2: IdMemorySemantics, arg3: IdMemorySemantics, arg4: IdRef, arg5: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -3005,7 +3005,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn atomic_i_increment(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdScope, arg2: IdMemorySemantics) !spirv.Id {
+    pub fn atomicIIncrement(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdScope, arg2: IdMemorySemantics) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -3021,7 +3021,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn atomic_i_decrement(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdScope, arg2: IdMemorySemantics) !spirv.Id {
+    pub fn atomicIDecrement(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdScope, arg2: IdMemorySemantics) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -3037,7 +3037,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn atomic_i_add(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdScope, arg2: IdMemorySemantics, arg3: IdRef) !spirv.Id {
+    pub fn atomicIAdd(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdScope, arg2: IdMemorySemantics, arg3: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -3054,7 +3054,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn atomic_i_sub(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdScope, arg2: IdMemorySemantics, arg3: IdRef) !spirv.Id {
+    pub fn atomicISub(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdScope, arg2: IdMemorySemantics, arg3: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -3071,7 +3071,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn atomic_s_min(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdScope, arg2: IdMemorySemantics, arg3: IdRef) !spirv.Id {
+    pub fn atomicSMin(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdScope, arg2: IdMemorySemantics, arg3: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -3088,7 +3088,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn atomic_u_min(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdScope, arg2: IdMemorySemantics, arg3: IdRef) !spirv.Id {
+    pub fn atomicUMin(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdScope, arg2: IdMemorySemantics, arg3: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -3105,7 +3105,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn atomic_s_max(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdScope, arg2: IdMemorySemantics, arg3: IdRef) !spirv.Id {
+    pub fn atomicSMax(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdScope, arg2: IdMemorySemantics, arg3: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -3122,7 +3122,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn atomic_u_max(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdScope, arg2: IdMemorySemantics, arg3: IdRef) !spirv.Id {
+    pub fn atomicUMax(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdScope, arg2: IdMemorySemantics, arg3: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -3139,7 +3139,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn atomic_and(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdScope, arg2: IdMemorySemantics, arg3: IdRef) !spirv.Id {
+    pub fn atomicAnd(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdScope, arg2: IdMemorySemantics, arg3: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -3156,7 +3156,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn atomic_or(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdScope, arg2: IdMemorySemantics, arg3: IdRef) !spirv.Id {
+    pub fn atomicOr(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdScope, arg2: IdMemorySemantics, arg3: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -3173,7 +3173,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn atomic_xor(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdScope, arg2: IdMemorySemantics, arg3: IdRef) !spirv.Id {
+    pub fn atomicXor(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdScope, arg2: IdMemorySemantics, arg3: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -3204,7 +3204,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn loop_merge(self: *spirv.Builder, arg0: IdRef, arg1: IdRef, arg2: LoopControl) !void {
+    pub fn loopMerge(self: *spirv.Builder, arg0: IdRef, arg1: IdRef, arg2: LoopControl) !void {
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
@@ -3216,7 +3216,7 @@ pub const instructions = struct {
         });
     }
 
-    pub fn selection_merge(self: *spirv.Builder, arg0: IdRef, arg1: SelectionControl) !void {
+    pub fn selectionMerge(self: *spirv.Builder, arg0: IdRef, arg1: SelectionControl) !void {
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
@@ -3249,7 +3249,7 @@ pub const instructions = struct {
         });
     }
 
-    pub fn branch_conditional(self: *spirv.Builder, arg0: IdRef, arg1: IdRef, arg2: IdRef, arg3: []const LiteralInteger) !void {
+    pub fn branchConditional(self: *spirv.Builder, arg0: IdRef, arg1: IdRef, arg2: IdRef, arg3: []const LiteralInteger) !void {
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
@@ -3292,7 +3292,7 @@ pub const instructions = struct {
         });
     }
 
-    pub fn return_value(self: *spirv.Builder, arg0: IdRef) !void {
+    pub fn returnValue(self: *spirv.Builder, arg0: IdRef) !void {
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
@@ -3311,7 +3311,7 @@ pub const instructions = struct {
         });
     }
 
-    pub fn lifetime_start(self: *spirv.Builder, arg0: IdRef, arg1: LiteralInteger) !void {
+    pub fn lifetimeStart(self: *spirv.Builder, arg0: IdRef, arg1: LiteralInteger) !void {
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
@@ -3322,7 +3322,7 @@ pub const instructions = struct {
         });
     }
 
-    pub fn lifetime_stop(self: *spirv.Builder, arg0: IdRef, arg1: LiteralInteger) !void {
+    pub fn lifetimeStop(self: *spirv.Builder, arg0: IdRef, arg1: LiteralInteger) !void {
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
@@ -3333,7 +3333,7 @@ pub const instructions = struct {
         });
     }
 
-    pub fn group_async_copy(self: *spirv.Builder, result_type: spirv.Id, arg0: IdScope, arg1: IdRef, arg2: IdRef, arg3: IdRef, arg4: IdRef, arg5: IdRef) !spirv.Id {
+    pub fn groupAsyncCopy(self: *spirv.Builder, result_type: spirv.Id, arg0: IdScope, arg1: IdRef, arg2: IdRef, arg3: IdRef, arg4: IdRef, arg5: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -3352,7 +3352,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn group_wait_events(self: *spirv.Builder, arg0: IdScope, arg1: IdRef, arg2: IdRef) !void {
+    pub fn groupWaitEvents(self: *spirv.Builder, arg0: IdScope, arg1: IdRef, arg2: IdRef) !void {
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
         try spirv.Builder.writeOperand(&operands, IdScope, arg0);
@@ -3364,7 +3364,7 @@ pub const instructions = struct {
         });
     }
 
-    pub fn group_all(self: *spirv.Builder, result_type: spirv.Id, arg0: IdScope, arg1: IdRef) !spirv.Id {
+    pub fn groupAll(self: *spirv.Builder, result_type: spirv.Id, arg0: IdScope, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -3379,7 +3379,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn group_any(self: *spirv.Builder, result_type: spirv.Id, arg0: IdScope, arg1: IdRef) !spirv.Id {
+    pub fn groupAny(self: *spirv.Builder, result_type: spirv.Id, arg0: IdScope, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -3394,7 +3394,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn group_broadcast(self: *spirv.Builder, result_type: spirv.Id, arg0: IdScope, arg1: IdRef, arg2: IdRef) !spirv.Id {
+    pub fn groupBroadcast(self: *spirv.Builder, result_type: spirv.Id, arg0: IdScope, arg1: IdRef, arg2: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -3410,7 +3410,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn group_i_add(self: *spirv.Builder, result_type: spirv.Id, arg0: IdScope, arg1: GroupOperation, arg2: IdRef) !spirv.Id {
+    pub fn groupIAdd(self: *spirv.Builder, result_type: spirv.Id, arg0: IdScope, arg1: GroupOperation, arg2: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -3426,7 +3426,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn group_f_add(self: *spirv.Builder, result_type: spirv.Id, arg0: IdScope, arg1: GroupOperation, arg2: IdRef) !spirv.Id {
+    pub fn groupFAdd(self: *spirv.Builder, result_type: spirv.Id, arg0: IdScope, arg1: GroupOperation, arg2: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -3442,7 +3442,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn group_f_min(self: *spirv.Builder, result_type: spirv.Id, arg0: IdScope, arg1: GroupOperation, arg2: IdRef) !spirv.Id {
+    pub fn groupFMin(self: *spirv.Builder, result_type: spirv.Id, arg0: IdScope, arg1: GroupOperation, arg2: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -3458,7 +3458,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn group_u_min(self: *spirv.Builder, result_type: spirv.Id, arg0: IdScope, arg1: GroupOperation, arg2: IdRef) !spirv.Id {
+    pub fn groupUMin(self: *spirv.Builder, result_type: spirv.Id, arg0: IdScope, arg1: GroupOperation, arg2: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -3474,7 +3474,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn group_s_min(self: *spirv.Builder, result_type: spirv.Id, arg0: IdScope, arg1: GroupOperation, arg2: IdRef) !spirv.Id {
+    pub fn groupSMin(self: *spirv.Builder, result_type: spirv.Id, arg0: IdScope, arg1: GroupOperation, arg2: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -3490,7 +3490,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn group_f_max(self: *spirv.Builder, result_type: spirv.Id, arg0: IdScope, arg1: GroupOperation, arg2: IdRef) !spirv.Id {
+    pub fn groupFMax(self: *spirv.Builder, result_type: spirv.Id, arg0: IdScope, arg1: GroupOperation, arg2: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -3506,7 +3506,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn group_u_max(self: *spirv.Builder, result_type: spirv.Id, arg0: IdScope, arg1: GroupOperation, arg2: IdRef) !spirv.Id {
+    pub fn groupUMax(self: *spirv.Builder, result_type: spirv.Id, arg0: IdScope, arg1: GroupOperation, arg2: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -3522,7 +3522,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn group_s_max(self: *spirv.Builder, result_type: spirv.Id, arg0: IdScope, arg1: GroupOperation, arg2: IdRef) !spirv.Id {
+    pub fn groupSMax(self: *spirv.Builder, result_type: spirv.Id, arg0: IdScope, arg1: GroupOperation, arg2: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -3538,7 +3538,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn read_pipe(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef, arg3: IdRef) !spirv.Id {
+    pub fn readPipe(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef, arg3: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -3555,7 +3555,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn write_pipe(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef, arg3: IdRef) !spirv.Id {
+    pub fn writePipe(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef, arg3: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -3572,7 +3572,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn reserved_read_pipe(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef, arg3: IdRef, arg4: IdRef, arg5: IdRef) !spirv.Id {
+    pub fn reservedReadPipe(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef, arg3: IdRef, arg4: IdRef, arg5: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -3591,7 +3591,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn reserved_write_pipe(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef, arg3: IdRef, arg4: IdRef, arg5: IdRef) !spirv.Id {
+    pub fn reservedWritePipe(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef, arg3: IdRef, arg4: IdRef, arg5: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -3610,7 +3610,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn reserve_read_pipe_packets(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef, arg3: IdRef) !spirv.Id {
+    pub fn reserveReadPipePackets(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef, arg3: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -3627,7 +3627,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn reserve_write_pipe_packets(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef, arg3: IdRef) !spirv.Id {
+    pub fn reserveWritePipePackets(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef, arg3: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -3644,7 +3644,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn commit_read_pipe(self: *spirv.Builder, arg0: IdRef, arg1: IdRef, arg2: IdRef, arg3: IdRef) !void {
+    pub fn commitReadPipe(self: *spirv.Builder, arg0: IdRef, arg1: IdRef, arg2: IdRef, arg3: IdRef) !void {
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
@@ -3657,7 +3657,7 @@ pub const instructions = struct {
         });
     }
 
-    pub fn commit_write_pipe(self: *spirv.Builder, arg0: IdRef, arg1: IdRef, arg2: IdRef, arg3: IdRef) !void {
+    pub fn commitWritePipe(self: *spirv.Builder, arg0: IdRef, arg1: IdRef, arg2: IdRef, arg3: IdRef) !void {
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
@@ -3670,7 +3670,7 @@ pub const instructions = struct {
         });
     }
 
-    pub fn is_valid_reserve_id(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
+    pub fn isValidReserveId(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -3684,7 +3684,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn get_num_pipe_packets(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef) !spirv.Id {
+    pub fn getNumPipePackets(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -3700,7 +3700,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn get_max_pipe_packets(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef) !spirv.Id {
+    pub fn getMaxPipePackets(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -3716,7 +3716,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn group_reserve_read_pipe_packets(self: *spirv.Builder, result_type: spirv.Id, arg0: IdScope, arg1: IdRef, arg2: IdRef, arg3: IdRef, arg4: IdRef) !spirv.Id {
+    pub fn groupReserveReadPipePackets(self: *spirv.Builder, result_type: spirv.Id, arg0: IdScope, arg1: IdRef, arg2: IdRef, arg3: IdRef, arg4: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -3734,7 +3734,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn group_reserve_write_pipe_packets(self: *spirv.Builder, result_type: spirv.Id, arg0: IdScope, arg1: IdRef, arg2: IdRef, arg3: IdRef, arg4: IdRef) !spirv.Id {
+    pub fn groupReserveWritePipePackets(self: *spirv.Builder, result_type: spirv.Id, arg0: IdScope, arg1: IdRef, arg2: IdRef, arg3: IdRef, arg4: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -3752,7 +3752,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn group_commit_read_pipe(self: *spirv.Builder, arg0: IdScope, arg1: IdRef, arg2: IdRef, arg3: IdRef, arg4: IdRef) !void {
+    pub fn groupCommitReadPipe(self: *spirv.Builder, arg0: IdScope, arg1: IdRef, arg2: IdRef, arg3: IdRef, arg4: IdRef) !void {
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
         try spirv.Builder.writeOperand(&operands, IdScope, arg0);
@@ -3766,7 +3766,7 @@ pub const instructions = struct {
         });
     }
 
-    pub fn group_commit_write_pipe(self: *spirv.Builder, arg0: IdScope, arg1: IdRef, arg2: IdRef, arg3: IdRef, arg4: IdRef) !void {
+    pub fn groupCommitWritePipe(self: *spirv.Builder, arg0: IdScope, arg1: IdRef, arg2: IdRef, arg3: IdRef, arg4: IdRef) !void {
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
         try spirv.Builder.writeOperand(&operands, IdScope, arg0);
@@ -3780,7 +3780,7 @@ pub const instructions = struct {
         });
     }
 
-    pub fn enqueue_marker(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef, arg3: IdRef) !spirv.Id {
+    pub fn enqueueMarker(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef, arg3: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -3797,7 +3797,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn enqueue_kernel(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef, arg3: IdRef, arg4: IdRef, arg5: IdRef, arg6: IdRef, arg7: IdRef, arg8: IdRef, arg9: IdRef, arg10: []const IdRef) !spirv.Id {
+    pub fn enqueueKernel(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef, arg3: IdRef, arg4: IdRef, arg5: IdRef, arg6: IdRef, arg7: IdRef, arg8: IdRef, arg9: IdRef, arg10: []const IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -3821,7 +3821,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn get_kernel_n_drange_sub_group_count(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef, arg3: IdRef, arg4: IdRef) !spirv.Id {
+    pub fn getKernelNDrangeSubGroupCount(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef, arg3: IdRef, arg4: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -3839,7 +3839,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn get_kernel_n_drange_max_sub_group_size(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef, arg3: IdRef, arg4: IdRef) !spirv.Id {
+    pub fn getKernelNDrangeMaxSubGroupSize(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef, arg3: IdRef, arg4: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -3857,7 +3857,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn get_kernel_work_group_size(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef, arg3: IdRef) !spirv.Id {
+    pub fn getKernelWorkGroupSize(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef, arg3: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -3874,7 +3874,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn get_kernel_preferred_work_group_size_multiple(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef, arg3: IdRef) !spirv.Id {
+    pub fn getKernelPreferredWorkGroupSizeMultiple(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef, arg3: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -3891,7 +3891,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn retain_event(self: *spirv.Builder, arg0: IdRef) !void {
+    pub fn retainEvent(self: *spirv.Builder, arg0: IdRef) !void {
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
@@ -3901,7 +3901,7 @@ pub const instructions = struct {
         });
     }
 
-    pub fn release_event(self: *spirv.Builder, arg0: IdRef) !void {
+    pub fn releaseEvent(self: *spirv.Builder, arg0: IdRef) !void {
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
@@ -3911,7 +3911,7 @@ pub const instructions = struct {
         });
     }
 
-    pub fn create_user_event(self: *spirv.Builder, result_type: spirv.Id) !spirv.Id {
+    pub fn createUserEvent(self: *spirv.Builder, result_type: spirv.Id) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -3924,7 +3924,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn is_valid_event(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
+    pub fn isValidEvent(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -3938,7 +3938,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn set_user_event_status(self: *spirv.Builder, arg0: IdRef, arg1: IdRef) !void {
+    pub fn setUserEventStatus(self: *spirv.Builder, arg0: IdRef, arg1: IdRef) !void {
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
@@ -3949,7 +3949,7 @@ pub const instructions = struct {
         });
     }
 
-    pub fn capture_event_profiling_info(self: *spirv.Builder, arg0: IdRef, arg1: IdRef, arg2: IdRef) !void {
+    pub fn captureEventProfilingInfo(self: *spirv.Builder, arg0: IdRef, arg1: IdRef, arg2: IdRef) !void {
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
@@ -3961,7 +3961,7 @@ pub const instructions = struct {
         });
     }
 
-    pub fn get_default_queue(self: *spirv.Builder, result_type: spirv.Id) !spirv.Id {
+    pub fn getDefaultQueue(self: *spirv.Builder, result_type: spirv.Id) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -3974,7 +3974,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn build_n_d_range(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef) !spirv.Id {
+    pub fn buildNDRange(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -3990,7 +3990,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn image_sparse_sample_implicit_lod(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: ?ImageOperands) !spirv.Id {
+    pub fn imageSparseSampleImplicitLod(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: ?ImageOperands) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -4006,7 +4006,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn image_sparse_sample_explicit_lod(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: ImageOperands) !spirv.Id {
+    pub fn imageSparseSampleExplicitLod(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: ImageOperands) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -4022,7 +4022,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn image_sparse_sample_dref_implicit_lod(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef, arg3: ?ImageOperands) !spirv.Id {
+    pub fn imageSparseSampleDrefImplicitLod(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef, arg3: ?ImageOperands) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -4039,7 +4039,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn image_sparse_sample_dref_explicit_lod(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef, arg3: ImageOperands) !spirv.Id {
+    pub fn imageSparseSampleDrefExplicitLod(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef, arg3: ImageOperands) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -4056,7 +4056,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn image_sparse_sample_proj_implicit_lod(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: ?ImageOperands) !spirv.Id {
+    pub fn imageSparseSampleProjImplicitLod(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: ?ImageOperands) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -4072,7 +4072,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn image_sparse_sample_proj_explicit_lod(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: ImageOperands) !spirv.Id {
+    pub fn imageSparseSampleProjExplicitLod(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: ImageOperands) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -4088,7 +4088,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn image_sparse_sample_proj_dref_implicit_lod(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef, arg3: ?ImageOperands) !spirv.Id {
+    pub fn imageSparseSampleProjDrefImplicitLod(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef, arg3: ?ImageOperands) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -4105,7 +4105,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn image_sparse_sample_proj_dref_explicit_lod(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef, arg3: ImageOperands) !spirv.Id {
+    pub fn imageSparseSampleProjDrefExplicitLod(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef, arg3: ImageOperands) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -4122,7 +4122,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn image_sparse_fetch(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: ?ImageOperands) !spirv.Id {
+    pub fn imageSparseFetch(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: ?ImageOperands) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -4138,7 +4138,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn image_sparse_gather(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef, arg3: ?ImageOperands) !spirv.Id {
+    pub fn imageSparseGather(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef, arg3: ?ImageOperands) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -4155,7 +4155,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn image_sparse_dref_gather(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef, arg3: ?ImageOperands) !spirv.Id {
+    pub fn imageSparseDrefGather(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef, arg3: ?ImageOperands) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -4172,7 +4172,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn image_sparse_texels_resident(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
+    pub fn imageSparseTexelsResident(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -4186,7 +4186,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn no_line(self: *spirv.Builder) !void {
+    pub fn noLine(self: *spirv.Builder) !void {
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
         try self.insns.append(self.allocator, .{
@@ -4195,7 +4195,7 @@ pub const instructions = struct {
         });
     }
 
-    pub fn atomic_flag_test_and_set(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdScope, arg2: IdMemorySemantics) !spirv.Id {
+    pub fn atomicFlagTestAndSet(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdScope, arg2: IdMemorySemantics) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -4211,7 +4211,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn atomic_flag_clear(self: *spirv.Builder, arg0: IdRef, arg1: IdScope, arg2: IdMemorySemantics) !void {
+    pub fn atomicFlagClear(self: *spirv.Builder, arg0: IdRef, arg1: IdScope, arg2: IdMemorySemantics) !void {
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
@@ -4223,7 +4223,7 @@ pub const instructions = struct {
         });
     }
 
-    pub fn image_sparse_read(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: ?ImageOperands) !spirv.Id {
+    pub fn imageSparseRead(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: ?ImageOperands) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -4239,7 +4239,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn decorate_id(self: *spirv.Builder, arg0: IdRef, arg1: Decoration) !void {
+    pub fn decorateId(self: *spirv.Builder, arg0: IdRef, arg1: Decoration) !void {
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
@@ -4250,7 +4250,7 @@ pub const instructions = struct {
         });
     }
 
-    pub fn subgroup_ballot_k_h_r(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
+    pub fn subgroupBallotKHR(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -4264,7 +4264,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn subgroup_first_invocation_k_h_r(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
+    pub fn subgroupFirstInvocationKHR(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -4278,7 +4278,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn subgroup_all_k_h_r(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
+    pub fn subgroupAllKHR(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -4292,7 +4292,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn subgroup_any_k_h_r(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
+    pub fn subgroupAnyKHR(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -4306,7 +4306,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn subgroup_all_equal_k_h_r(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
+    pub fn subgroupAllEqualKHR(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -4320,7 +4320,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn subgroup_read_invocation_k_h_r(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn subgroupReadInvocationKHR(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -4335,7 +4335,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn group_i_add_non_uniform_a_m_d(self: *spirv.Builder, result_type: spirv.Id, arg0: IdScope, arg1: GroupOperation, arg2: IdRef) !spirv.Id {
+    pub fn groupIAddNonUniformAMD(self: *spirv.Builder, result_type: spirv.Id, arg0: IdScope, arg1: GroupOperation, arg2: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -4351,7 +4351,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn group_f_add_non_uniform_a_m_d(self: *spirv.Builder, result_type: spirv.Id, arg0: IdScope, arg1: GroupOperation, arg2: IdRef) !spirv.Id {
+    pub fn groupFAddNonUniformAMD(self: *spirv.Builder, result_type: spirv.Id, arg0: IdScope, arg1: GroupOperation, arg2: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -4367,7 +4367,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn group_f_min_non_uniform_a_m_d(self: *spirv.Builder, result_type: spirv.Id, arg0: IdScope, arg1: GroupOperation, arg2: IdRef) !spirv.Id {
+    pub fn groupFMinNonUniformAMD(self: *spirv.Builder, result_type: spirv.Id, arg0: IdScope, arg1: GroupOperation, arg2: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -4383,7 +4383,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn group_u_min_non_uniform_a_m_d(self: *spirv.Builder, result_type: spirv.Id, arg0: IdScope, arg1: GroupOperation, arg2: IdRef) !spirv.Id {
+    pub fn groupUMinNonUniformAMD(self: *spirv.Builder, result_type: spirv.Id, arg0: IdScope, arg1: GroupOperation, arg2: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -4399,7 +4399,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn group_s_min_non_uniform_a_m_d(self: *spirv.Builder, result_type: spirv.Id, arg0: IdScope, arg1: GroupOperation, arg2: IdRef) !spirv.Id {
+    pub fn groupSMinNonUniformAMD(self: *spirv.Builder, result_type: spirv.Id, arg0: IdScope, arg1: GroupOperation, arg2: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -4415,7 +4415,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn group_f_max_non_uniform_a_m_d(self: *spirv.Builder, result_type: spirv.Id, arg0: IdScope, arg1: GroupOperation, arg2: IdRef) !spirv.Id {
+    pub fn groupFMaxNonUniformAMD(self: *spirv.Builder, result_type: spirv.Id, arg0: IdScope, arg1: GroupOperation, arg2: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -4431,7 +4431,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn group_u_max_non_uniform_a_m_d(self: *spirv.Builder, result_type: spirv.Id, arg0: IdScope, arg1: GroupOperation, arg2: IdRef) !spirv.Id {
+    pub fn groupUMaxNonUniformAMD(self: *spirv.Builder, result_type: spirv.Id, arg0: IdScope, arg1: GroupOperation, arg2: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -4447,7 +4447,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn group_s_max_non_uniform_a_m_d(self: *spirv.Builder, result_type: spirv.Id, arg0: IdScope, arg1: GroupOperation, arg2: IdRef) !spirv.Id {
+    pub fn groupSMaxNonUniformAMD(self: *spirv.Builder, result_type: spirv.Id, arg0: IdScope, arg1: GroupOperation, arg2: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -4463,7 +4463,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn fragment_mask_fetch_a_m_d(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn fragmentMaskFetchAMD(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -4478,7 +4478,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn fragment_fetch_a_m_d(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef) !spirv.Id {
+    pub fn fragmentFetchAMD(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -4494,7 +4494,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn subgroup_shuffle_i_n_t_e_l(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn subgroupShuffleINTEL(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -4509,7 +4509,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn subgroup_shuffle_down_i_n_t_e_l(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef) !spirv.Id {
+    pub fn subgroupShuffleDownINTEL(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -4525,7 +4525,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn subgroup_shuffle_up_i_n_t_e_l(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef) !spirv.Id {
+    pub fn subgroupShuffleUpINTEL(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -4541,7 +4541,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn subgroup_shuffle_xor_i_n_t_e_l(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn subgroupShuffleXorINTEL(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -4556,7 +4556,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn subgroup_block_read_i_n_t_e_l(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
+    pub fn subgroupBlockReadINTEL(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -4570,7 +4570,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn subgroup_block_write_i_n_t_e_l(self: *spirv.Builder, arg0: IdRef, arg1: IdRef) !void {
+    pub fn subgroupBlockWriteINTEL(self: *spirv.Builder, arg0: IdRef, arg1: IdRef) !void {
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
@@ -4581,7 +4581,7 @@ pub const instructions = struct {
         });
     }
 
-    pub fn subgroup_image_block_read_i_n_t_e_l(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn subgroupImageBlockReadINTEL(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -4596,7 +4596,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn subgroup_image_block_write_i_n_t_e_l(self: *spirv.Builder, arg0: IdRef, arg1: IdRef, arg2: IdRef) !void {
+    pub fn subgroupImageBlockWriteINTEL(self: *spirv.Builder, arg0: IdRef, arg1: IdRef, arg2: IdRef) !void {
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
@@ -4608,7 +4608,7 @@ pub const instructions = struct {
         });
     }
 
-    pub fn decorate_string_g_o_o_g_l_e(self: *spirv.Builder, arg0: IdRef, arg1: Decoration) !void {
+    pub fn decorateStringGOOGLE(self: *spirv.Builder, arg0: IdRef, arg1: Decoration) !void {
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
@@ -4619,7 +4619,7 @@ pub const instructions = struct {
         });
     }
 
-    pub fn member_decorate_string_g_o_o_g_l_e(self: *spirv.Builder, arg0: IdRef, arg1: LiteralInteger, arg2: Decoration) !void {
+    pub fn memberDecorateStringGOOGLE(self: *spirv.Builder, arg0: IdRef, arg1: LiteralInteger, arg2: Decoration) !void {
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);

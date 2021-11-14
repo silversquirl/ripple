@@ -158,6 +158,7 @@ test "SPIR-V generation" {
     defer b.deinit();
 
     try b.capability(.shader);
+    try b.memoryModel(.logical, .g_l_s_l450);
 
     var buf = std.ArrayList(u32).init(std.testing.allocator);
     defer buf.deinit();
@@ -173,6 +174,11 @@ test "SPIR-V generation" {
 
         // OpCapability Shader
         0x0002_0011,
+        1,
+
+        // OpMemoryModel Logical GLSL450
+        0x0003_000e,
+        0,
         1,
     }, buf.items);
 }

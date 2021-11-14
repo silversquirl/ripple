@@ -17,6 +17,8 @@ TO_SNAKE_CASE = str.maketrans({
 def to_snake_case(s):
 	# TODO: properly handle things like EXT, AMD, IO, FP, GLSL, NaN, etc
 	return s.translate(TO_SNAKE_CASE).lstrip('_')
+def to_camel_case(s):
+	return s[0].lower() + s[1:]
 
 # Print the string as a Zig identifier escaping it with @"" syntax if needed.
 # Ported from std/zig/fmt.zig
@@ -190,7 +192,7 @@ def gen(url, f):
 	for insn in spec["instructions"]:
 		name = insn["opname"]
 		assert name.startswith("Op")
-		name = format_id(to_snake_case(name[2:]))
+		name = format_id(to_camel_case(name[2:]))
 
 		operands = insn.get("operands", [])
 		has_type = operands and operands[0]["kind"] == "IdResultType"
