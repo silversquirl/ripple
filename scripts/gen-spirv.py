@@ -11,49 +11,18 @@ from dataclasses import dataclass
 CORE_URL = "https://github.com/KhronosGroup/SPIRV-Headers/raw/master/include/spirv/1.0/spirv.core.grammar.json"
 GLSL_URL = "https://github.com/KhronosGroup/SPIRV-Headers/raw/master/include/spirv/1.0/extinst.glsl.std.450.grammar.json"
 
-NORMALIZE_WORDS = [
+NORMALIZE_WORDS = (
     # Acronyms
-    "AMD",
-    "ESSL",
-    "EXT",
-    "GOOGLE",
-    "GLSL",
-    "GL",
-    "HLSL",
-    "INTEL",
-    "IO",
-    "KHR",
-    "NV",
-    "OpenCL",
-    "_C",
-    "_CPP",
+    "AMD ESSL EXT GOOGLE GLSL GL HLSL INTEL IO KHR NV OpenCL _C _CPP".split()
     # Color modes
-    "ABGR",
-    "ARGB",
-    "BGRA",
-    "RA",
-    "RG",
-    "RGB",
-    "RGBA",
-    "sARGB",
-    "sBGRA",
-    "sRGB",
-    "sRGBA",
+    + "ABGR ARGB BGRA RA RG RGB RGBA sARGB sBGRA sRGB sRGBA".split()
     # Float stuff
-    "FP",
-    "NSZ",
-    "NaN",
-    "RTE",
-    "RTN",
-    "RTP",
-    "RTZ",
+    + "FP NSZ NaN RTE RTN RTP RTZ".split()
     # Dimensions
-    "1D",
-    "2D",
-    "3D",
+    + "1D 2D 3D".split()
     # Misc
-    "MS",
-]
+    + ["MS"]
+)
 NORMALIZE_WORDS_RE = re.compile(
     "|".join(map(re.escape, sorted(NORMALIZE_WORDS, key=len, reverse=True)))
 )
@@ -90,57 +59,13 @@ def format_id(name):
         return f"@{json.dumps(name)}"  # JSON strings are close enough and I'm lazy
 
 
-ZIG_KEYWORDS = {
-    "addrspace",
-    "align",
-    "allowzero",
-    "and",
-    "anyframe",
-    "anytype",
-    "asm",
-    "async",
-    "await",
-    "break",
-    "callconv",
-    "catch",
-    "comptime",
-    "const",
-    "continue",
-    "defer",
-    "else",
-    "enum",
-    "errdefer",
-    "error",
-    "export",
-    "extern",
-    "fn",
-    "for",
-    "if",
-    "inline",
-    "noalias",
-    "noinline",
-    "nosuspend",
-    "opaque",
-    "or",
-    "orelse",
-    "packed",
-    "pub",
-    "resume",
-    "return",
-    "linksection",
-    "struct",
-    "suspend",
-    "switch",
-    "test",
-    "threadlocal",
-    "try",
-    "union",
-    "unreachable",
-    "usingnamespace",
-    "var",
-    "volatile",
-    "while",
-}
+ZIG_KEYWORDS = """
+    addrspace align allowzero and anyframe anytype asm async await break
+    callconv catch comptime const continue defer else enum errdefer error
+    export extern fn for if inline noalias noinline nosuspend opaque or
+    orelse packed pub resume return linksection struct suspend switch test
+    threadlocal try union unreachable usingnamespace var volatile while
+""".split()
 
 
 def is_valid_id(name):
