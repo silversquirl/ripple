@@ -158,7 +158,7 @@ test "SPIR-V generation" {
     defer b.deinit();
 
     try b.capability(.shader);
-    try b.memoryModel(.logical, .g_l_s_l450);
+    try b.memoryModel(.logical, .glsl450);
 
     var buf = std.ArrayList(u32).init(std.testing.allocator);
     defer buf.deinit();

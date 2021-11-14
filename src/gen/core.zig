@@ -4250,7 +4250,7 @@ pub const instructions = struct {
         });
     }
 
-    pub fn subgroupBallotKHR(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
+    pub fn subgroupBallotKhr(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -4264,7 +4264,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn subgroupFirstInvocationKHR(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
+    pub fn subgroupFirstInvocationKhr(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -4278,7 +4278,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn subgroupAllKHR(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
+    pub fn subgroupAllKhr(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -4292,7 +4292,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn subgroupAnyKHR(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
+    pub fn subgroupAnyKhr(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -4306,7 +4306,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn subgroupAllEqualKHR(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
+    pub fn subgroupAllEqualKhr(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -4320,7 +4320,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn subgroupReadInvocationKHR(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn subgroupReadInvocationKhr(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -4335,7 +4335,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn groupIAddNonUniformAMD(self: *spirv.Builder, result_type: spirv.Id, arg0: IdScope, arg1: GroupOperation, arg2: IdRef) !spirv.Id {
+    pub fn groupIAddNonUniformAmd(self: *spirv.Builder, result_type: spirv.Id, arg0: IdScope, arg1: GroupOperation, arg2: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -4351,7 +4351,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn groupFAddNonUniformAMD(self: *spirv.Builder, result_type: spirv.Id, arg0: IdScope, arg1: GroupOperation, arg2: IdRef) !spirv.Id {
+    pub fn groupFAddNonUniformAmd(self: *spirv.Builder, result_type: spirv.Id, arg0: IdScope, arg1: GroupOperation, arg2: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -4367,7 +4367,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn groupFMinNonUniformAMD(self: *spirv.Builder, result_type: spirv.Id, arg0: IdScope, arg1: GroupOperation, arg2: IdRef) !spirv.Id {
+    pub fn groupFMinNonUniformAmd(self: *spirv.Builder, result_type: spirv.Id, arg0: IdScope, arg1: GroupOperation, arg2: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -4383,7 +4383,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn groupUMinNonUniformAMD(self: *spirv.Builder, result_type: spirv.Id, arg0: IdScope, arg1: GroupOperation, arg2: IdRef) !spirv.Id {
+    pub fn groupUMinNonUniformAmd(self: *spirv.Builder, result_type: spirv.Id, arg0: IdScope, arg1: GroupOperation, arg2: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -4399,7 +4399,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn groupSMinNonUniformAMD(self: *spirv.Builder, result_type: spirv.Id, arg0: IdScope, arg1: GroupOperation, arg2: IdRef) !spirv.Id {
+    pub fn groupSMinNonUniformAmd(self: *spirv.Builder, result_type: spirv.Id, arg0: IdScope, arg1: GroupOperation, arg2: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -4415,7 +4415,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn groupFMaxNonUniformAMD(self: *spirv.Builder, result_type: spirv.Id, arg0: IdScope, arg1: GroupOperation, arg2: IdRef) !spirv.Id {
+    pub fn groupFMaxNonUniformAmd(self: *spirv.Builder, result_type: spirv.Id, arg0: IdScope, arg1: GroupOperation, arg2: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -4431,7 +4431,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn groupUMaxNonUniformAMD(self: *spirv.Builder, result_type: spirv.Id, arg0: IdScope, arg1: GroupOperation, arg2: IdRef) !spirv.Id {
+    pub fn groupUMaxNonUniformAmd(self: *spirv.Builder, result_type: spirv.Id, arg0: IdScope, arg1: GroupOperation, arg2: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -4447,7 +4447,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn groupSMaxNonUniformAMD(self: *spirv.Builder, result_type: spirv.Id, arg0: IdScope, arg1: GroupOperation, arg2: IdRef) !spirv.Id {
+    pub fn groupSMaxNonUniformAmd(self: *spirv.Builder, result_type: spirv.Id, arg0: IdScope, arg1: GroupOperation, arg2: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -4463,7 +4463,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn fragmentMaskFetchAMD(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn fragmentMaskFetchAmd(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -4478,7 +4478,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn fragmentFetchAMD(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef) !spirv.Id {
+    pub fn fragmentFetchAmd(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -4494,7 +4494,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn subgroupShuffleINTEL(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn subgroupShuffleIntel(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -4509,7 +4509,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn subgroupShuffleDownINTEL(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef) !spirv.Id {
+    pub fn subgroupShuffleDownIntel(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -4525,7 +4525,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn subgroupShuffleUpINTEL(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef) !spirv.Id {
+    pub fn subgroupShuffleUpIntel(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef, arg2: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -4541,7 +4541,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn subgroupShuffleXorINTEL(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn subgroupShuffleXorIntel(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -4556,7 +4556,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn subgroupBlockReadINTEL(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
+    pub fn subgroupBlockReadIntel(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -4570,7 +4570,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn subgroupBlockWriteINTEL(self: *spirv.Builder, arg0: IdRef, arg1: IdRef) !void {
+    pub fn subgroupBlockWriteIntel(self: *spirv.Builder, arg0: IdRef, arg1: IdRef) !void {
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
@@ -4581,7 +4581,7 @@ pub const instructions = struct {
         });
     }
 
-    pub fn subgroupImageBlockReadINTEL(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
+    pub fn subgroupImageBlockReadIntel(self: *spirv.Builder, result_type: spirv.Id, arg0: IdRef, arg1: IdRef) !spirv.Id {
         const result = self.newId();
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
@@ -4596,7 +4596,7 @@ pub const instructions = struct {
         return result;
     }
 
-    pub fn subgroupImageBlockWriteINTEL(self: *spirv.Builder, arg0: IdRef, arg1: IdRef, arg2: IdRef) !void {
+    pub fn subgroupImageBlockWriteIntel(self: *spirv.Builder, arg0: IdRef, arg1: IdRef, arg2: IdRef) !void {
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
@@ -4608,7 +4608,7 @@ pub const instructions = struct {
         });
     }
 
-    pub fn decorateStringGOOGLE(self: *spirv.Builder, arg0: IdRef, arg1: Decoration) !void {
+    pub fn decorateStringGoogle(self: *spirv.Builder, arg0: IdRef, arg1: Decoration) !void {
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
@@ -4619,7 +4619,7 @@ pub const instructions = struct {
         });
     }
 
-    pub fn memberDecorateStringGOOGLE(self: *spirv.Builder, arg0: IdRef, arg1: LiteralInteger, arg2: Decoration) !void {
+    pub fn memberDecorateStringGoogle(self: *spirv.Builder, arg0: IdRef, arg1: LiteralInteger, arg2: Decoration) !void {
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
@@ -4657,17 +4657,17 @@ pub const ImageOperands = packed struct {
 };
 
 pub const FPFastMathMode = packed struct {
-    not_na_n: bool = false,
+    not_nan: bool = false,
     not_inf: bool = false,
-    n_s_z: bool = false,
+    nsz: bool = false,
     allow_recip: bool = false,
     fast: bool = false,
 
     pub fn bitmask(self: FPFastMathMode) u32 {
         var bits: u32 = 0;
-        if (self.not_na_n) bits |= 0x1;
+        if (self.not_nan) bits |= 0x1;
         if (self.not_inf) bits |= 0x2;
-        if (self.n_s_z) bits |= 0x4;
+        if (self.nsz) bits |= 0x4;
         if (self.allow_recip) bits |= 0x8;
         if (self.fast) bits |= 0x10;
         return bits;
@@ -4768,11 +4768,11 @@ pub const KernelProfilingInfo = packed struct {
 
 pub const SourceLanguage = enum(u16) {
     unknown = 0,
-    e_s_s_l = 1,
-    g_l_s_l = 2,
-    open_c_l__c = 3,
-    open_c_l__c_p_p = 4,
-    h_l_s_l = 5,
+    essl = 1,
+    glsl = 2,
+    opencl_c = 3,
+    opencl_cpp = 4,
+    hlsl = 5,
 };
 
 pub const ExecutionModel = enum(u16) {
@@ -4781,7 +4781,7 @@ pub const ExecutionModel = enum(u16) {
     tessellation_evaluation = 2,
     geometry = 3,
     fragment = 4,
-    g_l_compute = 5,
+    gl_compute = 5,
     kernel = 6,
 };
 
@@ -4793,8 +4793,8 @@ pub const AddressingModel = enum(u16) {
 
 pub const MemoryModel = enum(u16) {
     simple = 0,
-    g_l_s_l450 = 1,
-    open_c_l = 2,
+    glsl450 = 1,
+    opencl = 2,
 };
 
 pub const ExecutionMode = union(ExecutionModeTag) {
@@ -4830,7 +4830,7 @@ pub const ExecutionMode = union(ExecutionModeTag) {
     vec_type_hint: LiteralInteger,
     contraction_off: void,
     post_depth_coverage: void,
-    stencil_ref_replacing_e_x_t: void,
+    stencil_ref_replacing_ext: void,
 };
 pub const ExecutionModeTag = enum(u16) {
     invocations = 0,
@@ -4865,7 +4865,7 @@ pub const ExecutionModeTag = enum(u16) {
     vec_type_hint = 30,
     contraction_off = 31,
     post_depth_coverage = 4446,
-    stencil_ref_replacing_e_x_t = 5027,
+    stencil_ref_replacing_ext = 5027,
 };
 
 pub const StorageClass = enum(u16) {
@@ -4885,9 +4885,9 @@ pub const StorageClass = enum(u16) {
 };
 
 pub const Dim = enum(u16) {
-    @"1_d" = 0,
-    @"2_d" = 1,
-    @"3_d" = 2,
+    @"1d" = 0,
+    @"2d" = 1,
+    @"3d" = 2,
     cube = 3,
     rect = 4,
     buffer = 5,
@@ -4953,24 +4953,24 @@ pub const ImageFormat = enum(u16) {
 pub const ImageChannelOrder = enum(u16) {
     r = 0,
     a = 1,
-    r_g = 2,
-    r_a = 3,
-    r_g_b = 4,
-    r_g_b_a = 5,
-    b_g_r_a = 6,
-    a_r_g_b = 7,
+    rg = 2,
+    ra = 3,
+    rgb = 4,
+    rgba = 5,
+    bgra = 6,
+    argb = 7,
     intensity = 8,
     luminance = 9,
     rx = 10,
-    r_gx = 11,
-    r_g_bx = 12,
+    rgx = 11,
+    rgbx = 12,
     depth = 13,
     depth_stencil = 14,
-    s_r_g_b = 15,
-    s_r_g_bx = 16,
-    s_r_g_b_a = 17,
-    s_b_g_r_a = 18,
-    a_b_g_r = 19,
+    srgb = 15,
+    srgbx = 16,
+    srgba = 17,
+    sbgra = 18,
+    abgr = 19,
 };
 
 pub const ImageChannelDataType = enum(u16) {
@@ -4994,10 +4994,10 @@ pub const ImageChannelDataType = enum(u16) {
 };
 
 pub const FPRoundingMode = enum(u16) {
-    r_t_e = 0,
-    r_t_z = 1,
-    r_t_p = 2,
-    r_t_n = 3,
+    rte = 0,
+    rtz = 1,
+    rtp = 2,
+    rtn = 3,
 };
 
 pub const LinkageType = enum(u16) {
@@ -5031,8 +5031,8 @@ pub const Decoration = union(DecorationTag) {
     col_major: void,
     array_stride: LiteralInteger,
     matrix_stride: LiteralInteger,
-    g_l_s_l_shared: void,
-    g_l_s_l_packed: void,
+    glsl_shared: void,
+    glsl_packed: void,
     c_packed: void,
     built_in: BuiltIn,
     no_perspective: void,
@@ -5060,19 +5060,19 @@ pub const Decoration = union(DecorationTag) {
     xfb_buffer: LiteralInteger,
     xfb_stride: LiteralInteger,
     func_param_attr: FunctionParameterAttribute,
-    f_p_rounding_mode: FPRoundingMode,
-    f_p_fast_math_mode: FPFastMathMode,
+    fp_rounding_mode: FPRoundingMode,
+    fp_fast_math_mode: FPFastMathMode,
     linkage_attributes: std.meta.Tuple(LiteralString, LinkageType),
     no_contraction: void,
     input_attachment_index: LiteralInteger,
     alignment: LiteralInteger,
-    explicit_interp_a_m_d: void,
-    override_coverage_n_v: void,
-    passthrough_n_v: void,
-    viewport_relative_n_v: void,
-    secondary_viewport_relative_n_v: LiteralInteger,
-    hlsl_counter_buffer_g_o_o_g_l_e: IdRef,
-    hlsl_semantic_g_o_o_g_l_e: LiteralString,
+    explicit_interp_amd: void,
+    override_coverage_nv: void,
+    passthrough_nv: void,
+    viewport_relative_nv: void,
+    secondary_viewport_relative_nv: LiteralInteger,
+    hlsl_counter_buffer_google: IdRef,
+    hlsl_semantic_google: LiteralString,
 };
 pub const DecorationTag = enum(u16) {
     relaxed_precision = 0,
@@ -5083,8 +5083,8 @@ pub const DecorationTag = enum(u16) {
     col_major = 5,
     array_stride = 6,
     matrix_stride = 7,
-    g_l_s_l_shared = 8,
-    g_l_s_l_packed = 9,
+    glsl_shared = 8,
+    glsl_packed = 9,
     c_packed = 10,
     built_in = 11,
     no_perspective = 13,
@@ -5112,19 +5112,19 @@ pub const DecorationTag = enum(u16) {
     xfb_buffer = 36,
     xfb_stride = 37,
     func_param_attr = 38,
-    f_p_rounding_mode = 39,
-    f_p_fast_math_mode = 40,
+    fp_rounding_mode = 39,
+    fp_fast_math_mode = 40,
     linkage_attributes = 41,
     no_contraction = 42,
     input_attachment_index = 43,
     alignment = 44,
-    explicit_interp_a_m_d = 4999,
-    override_coverage_n_v = 5248,
-    passthrough_n_v = 5250,
-    viewport_relative_n_v = 5252,
-    secondary_viewport_relative_n_v = 5256,
-    hlsl_counter_buffer_g_o_o_g_l_e = 5634,
-    hlsl_semantic_g_o_o_g_l_e = 5635,
+    explicit_interp_amd = 4999,
+    override_coverage_nv = 5248,
+    passthrough_nv = 5250,
+    viewport_relative_nv = 5252,
+    secondary_viewport_relative_nv = 5256,
+    hlsl_counter_buffer_google = 5634,
+    hlsl_semantic_google = 5635,
 };
 
 pub const BuiltIn = enum(u16) {
@@ -5169,29 +5169,29 @@ pub const BuiltIn = enum(u16) {
     subgroup_local_invocation_id = 41,
     vertex_index = 42,
     instance_index = 43,
-    subgroup_eq_mask_k_h_r = 4416,
-    subgroup_ge_mask_k_h_r = 4417,
-    subgroup_gt_mask_k_h_r = 4418,
-    subgroup_le_mask_k_h_r = 4419,
-    subgroup_lt_mask_k_h_r = 4420,
+    subgroup_eq_mask_khr = 4416,
+    subgroup_ge_mask_khr = 4417,
+    subgroup_gt_mask_khr = 4418,
+    subgroup_le_mask_khr = 4419,
+    subgroup_lt_mask_khr = 4420,
     base_vertex = 4424,
     base_instance = 4425,
     draw_index = 4426,
     device_index = 4438,
     view_index = 4440,
-    bary_coord_no_persp_a_m_d = 4992,
-    bary_coord_no_persp_centroid_a_m_d = 4993,
-    bary_coord_no_persp_sample_a_m_d = 4994,
-    bary_coord_smooth_a_m_d = 4995,
-    bary_coord_smooth_centroid_a_m_d = 4996,
-    bary_coord_smooth_sample_a_m_d = 4997,
-    bary_coord_pull_model_a_m_d = 4998,
-    frag_stencil_ref_e_x_t = 5014,
-    viewport_mask_n_v = 5253,
-    secondary_position_n_v = 5257,
-    secondary_viewport_mask_n_v = 5258,
-    position_per_view_n_v = 5261,
-    viewport_mask_per_view_n_v = 5262,
+    bary_coord_no_persp_amd = 4992,
+    bary_coord_no_persp_centroid_amd = 4993,
+    bary_coord_no_persp_sample_amd = 4994,
+    bary_coord_smooth_amd = 4995,
+    bary_coord_smooth_centroid_amd = 4996,
+    bary_coord_smooth_sample_amd = 4997,
+    bary_coord_pull_model_amd = 4998,
+    frag_stencil_ref_ext = 5014,
+    viewport_mask_nv = 5253,
+    secondary_position_nv = 5257,
+    secondary_viewport_mask_nv = 5258,
+    position_per_view_nv = 5261,
+    viewport_mask_per_view_nv = 5262,
 };
 
 pub const Scope = enum(u16) {
@@ -5256,12 +5256,12 @@ pub const Capability = enum(u16) {
     input_attachment = 40,
     sparse_residency = 41,
     min_lod = 42,
-    sampled1_d = 43,
-    image1_d = 44,
+    sampled1d = 43,
+    image1d = 44,
     sampled_cube_array = 45,
     sampled_buffer = 46,
     image_buffer = 47,
-    image_m_s_array = 48,
+    image_ms_array = 48,
     storage_image_extended_formats = 49,
     image_query = 50,
     derivative_control = 51,
@@ -5271,9 +5271,9 @@ pub const Capability = enum(u16) {
     storage_image_read_without_format = 55,
     storage_image_write_without_format = 56,
     multi_viewport = 57,
-    subgroup_ballot_k_h_r = 4423,
+    subgroup_ballot_khr = 4423,
     draw_parameters = 4427,
-    subgroup_vote_k_h_r = 4431,
+    subgroup_vote_khr = 4431,
     storage_buffer16_bit_access = 4433,
     uniform_and_storage_buffer16_bit_access = 4434,
     storage_push_constant16 = 4435,
@@ -5284,19 +5284,19 @@ pub const Capability = enum(u16) {
     variable_pointers = 4442,
     atomic_storage_ops = 4445,
     sample_mask_post_depth_coverage = 4447,
-    image_gather_bias_lod_a_m_d = 5009,
-    fragment_mask_a_m_d = 5010,
-    stencil_export_e_x_t = 5013,
-    image_read_write_lod_a_m_d = 5015,
-    sample_mask_override_coverage_n_v = 5249,
-    geometry_shader_passthrough_n_v = 5251,
-    shader_viewport_index_layer_e_x_t = 5254,
-    shader_viewport_mask_n_v = 5255,
-    shader_stereo_view_n_v = 5259,
-    per_view_attributes_n_v = 5260,
-    subgroup_shuffle_i_n_t_e_l = 5568,
-    subgroup_buffer_block_i_o_i_n_t_e_l = 5569,
-    subgroup_image_block_i_o_i_n_t_e_l = 5570,
+    image_gather_bias_lod_amd = 5009,
+    fragment_mask_amd = 5010,
+    stencil_export_ext = 5013,
+    image_read_write_lod_amd = 5015,
+    sample_mask_override_coverage_nv = 5249,
+    geometry_shader_passthrough_nv = 5251,
+    shader_viewport_index_layer_ext = 5254,
+    shader_viewport_mask_nv = 5255,
+    shader_stereo_view_nv = 5259,
+    per_view_attributes_nv = 5260,
+    subgroup_shuffle_intel = 5568,
+    subgroup_buffer_block_io_intel = 5569,
+    subgroup_image_block_io_intel = 5570,
 };
 
 /// Reference to an <id> representing the result's type of the enclosing instruction

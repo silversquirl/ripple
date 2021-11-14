@@ -10,14 +10,69 @@ from dataclasses import dataclass
 
 CORE_URL = 'https://github.com/KhronosGroup/SPIRV-Headers/raw/master/include/spirv/1.0/spirv.core.grammar.json'
 
+NORMALIZE_WORDS = [
+	# Acronyms
+	'AMD',
+	'ESSL',
+	'EXT',
+	'GOOGLE',
+	'GLSL',
+	'GL',
+	'HLSL',
+	'INTEL',
+	'IO',
+	'KHR',
+	'NV',
+	'OpenCL',
+	'_C',
+	'_CPP',
+
+	# Color modes
+	'ABGR',
+	'ARGB',
+	'BGRA',
+	'RA',
+	'RG',
+	'RGB',
+	'RGBA',
+	'sARGB',
+	'sBGRA',
+	'sRGB',
+	'sRGBA',
+
+	# Float stuff
+	'FP',
+	'NSZ',
+	'NaN',
+	'RTE',
+	'RTN',
+	'RTP',
+	'RTZ',
+
+	# Dimensions
+	"1D",
+	"2D",
+	"3D",
+
+	# Misc
+	'MS',
+]
+NORMALIZE_WORDS_RE = re.compile('|'.join(
+	map(re.escape, sorted(NORMALIZE_WORDS, key=len, reverse=True))
+))
+def normalize_words(s):
+	return NORMALIZE_WORDS_RE.sub(lambda m: m.group(0).capitalize(), s)
+
 TO_SNAKE_CASE = str.maketrans({
 	upper: '_' + lower
 	for upper, lower in zip(string.ascii_uppercase, string.ascii_lowercase)
 })
 def to_snake_case(s):
-	# TODO: properly handle things like EXT, AMD, IO, FP, GLSL, NaN, etc
+	s=normalize_words(s)
 	return s.translate(TO_SNAKE_CASE).lstrip('_')
+
 def to_camel_case(s):
+	s=normalize_words(s)
 	return s[0].lower() + s[1:]
 
 # Print the string as a Zig identifier escaping it with @"" syntax if needed.
