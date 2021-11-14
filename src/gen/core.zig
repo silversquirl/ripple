@@ -1,5 +1,6 @@
 const std = @import("std");
 const spirv = @import("../spirv.zig");
+
 pub const magic_number = 0x07230203;
 pub const version = (1 << 16) | (0 << 8);
 
@@ -41,8 +42,8 @@ pub const instructions = struct {
         errdefer operands.deinit();
         try spirv.Builder.writeOperand(&operands, SourceLanguage, arg0);
         try spirv.Builder.writeOperand(&operands, LiteralInteger, arg1);
-        try spirv.Builder.writeOperand(&operands, IdRef, arg2);
-        try spirv.Builder.writeOperand(&operands, LiteralString, arg3);
+        try spirv.Builder.writeOperand(&operands, ?IdRef, arg2);
+        try spirv.Builder.writeOperand(&operands, ?LiteralString, arg3);
         try self.insns.append(self.allocator, .{
             .op = 3,
             .operands = operands.toOwnedSlice(),
@@ -138,7 +139,7 @@ pub const instructions = struct {
         try spirv.Builder.writeOperand(&operands, spirv.Id, result);
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
         try spirv.Builder.writeOperand(&operands, LiteralExtInstInteger, arg1);
-        try spirv.Builder.writeOperand(&operands, IdRef, arg2);
+        try spirv.Builder.writeOperand(&operands, []const IdRef, arg2);
         try self.insns.append(self.allocator, .{
             .op = 12,
             .operands = operands.toOwnedSlice(),
@@ -163,7 +164,7 @@ pub const instructions = struct {
         try spirv.Builder.writeOperand(&operands, ExecutionModel, arg0);
         try spirv.Builder.writeOperand(&operands, IdRef, arg1);
         try spirv.Builder.writeOperand(&operands, LiteralString, arg2);
-        try spirv.Builder.writeOperand(&operands, IdRef, arg3);
+        try spirv.Builder.writeOperand(&operands, []const IdRef, arg3);
         try self.insns.append(self.allocator, .{
             .op = 15,
             .operands = operands.toOwnedSlice(),
@@ -282,7 +283,7 @@ pub const instructions = struct {
         try spirv.Builder.writeOperand(&operands, LiteralInteger, arg4);
         try spirv.Builder.writeOperand(&operands, LiteralInteger, arg5);
         try spirv.Builder.writeOperand(&operands, ImageFormat, arg6);
-        try spirv.Builder.writeOperand(&operands, AccessQualifier, arg7);
+        try spirv.Builder.writeOperand(&operands, ?AccessQualifier, arg7);
         try self.insns.append(self.allocator, .{
             .op = 25,
             .operands = operands.toOwnedSlice(),
@@ -347,7 +348,7 @@ pub const instructions = struct {
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
         try spirv.Builder.writeOperand(&operands, spirv.Id, result);
-        try spirv.Builder.writeOperand(&operands, IdRef, arg0);
+        try spirv.Builder.writeOperand(&operands, []const IdRef, arg0);
         try self.insns.append(self.allocator, .{
             .op = 30,
             .operands = operands.toOwnedSlice(),
@@ -388,7 +389,7 @@ pub const instructions = struct {
         errdefer operands.deinit();
         try spirv.Builder.writeOperand(&operands, spirv.Id, result);
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
-        try spirv.Builder.writeOperand(&operands, IdRef, arg1);
+        try spirv.Builder.writeOperand(&operands, []const IdRef, arg1);
         try self.insns.append(self.allocator, .{
             .op = 33,
             .operands = operands.toOwnedSlice(),
@@ -514,7 +515,7 @@ pub const instructions = struct {
         errdefer operands.deinit();
         try spirv.Builder.writeOperand(&operands, spirv.Id, result_type);
         try spirv.Builder.writeOperand(&operands, spirv.Id, result);
-        try spirv.Builder.writeOperand(&operands, IdRef, arg0);
+        try spirv.Builder.writeOperand(&operands, []const IdRef, arg0);
         try self.insns.append(self.allocator, .{
             .op = 44,
             .operands = operands.toOwnedSlice(),
@@ -597,7 +598,7 @@ pub const instructions = struct {
         errdefer operands.deinit();
         try spirv.Builder.writeOperand(&operands, spirv.Id, result_type);
         try spirv.Builder.writeOperand(&operands, spirv.Id, result);
-        try spirv.Builder.writeOperand(&operands, IdRef, arg0);
+        try spirv.Builder.writeOperand(&operands, []const IdRef, arg0);
         try self.insns.append(self.allocator, .{
             .op = 51,
             .operands = operands.toOwnedSlice(),
@@ -663,7 +664,7 @@ pub const instructions = struct {
         try spirv.Builder.writeOperand(&operands, spirv.Id, result_type);
         try spirv.Builder.writeOperand(&operands, spirv.Id, result);
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
-        try spirv.Builder.writeOperand(&operands, IdRef, arg1);
+        try spirv.Builder.writeOperand(&operands, []const IdRef, arg1);
         try self.insns.append(self.allocator, .{
             .op = 57,
             .operands = operands.toOwnedSlice(),
@@ -678,7 +679,7 @@ pub const instructions = struct {
         try spirv.Builder.writeOperand(&operands, spirv.Id, result_type);
         try spirv.Builder.writeOperand(&operands, spirv.Id, result);
         try spirv.Builder.writeOperand(&operands, StorageClass, arg0);
-        try spirv.Builder.writeOperand(&operands, IdRef, arg1);
+        try spirv.Builder.writeOperand(&operands, ?IdRef, arg1);
         try self.insns.append(self.allocator, .{
             .op = 59,
             .operands = operands.toOwnedSlice(),
@@ -709,7 +710,7 @@ pub const instructions = struct {
         try spirv.Builder.writeOperand(&operands, spirv.Id, result_type);
         try spirv.Builder.writeOperand(&operands, spirv.Id, result);
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
-        try spirv.Builder.writeOperand(&operands, MemoryAccess, arg1);
+        try spirv.Builder.writeOperand(&operands, ?MemoryAccess, arg1);
         try self.insns.append(self.allocator, .{
             .op = 61,
             .operands = operands.toOwnedSlice(),
@@ -722,7 +723,7 @@ pub const instructions = struct {
         errdefer operands.deinit();
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
         try spirv.Builder.writeOperand(&operands, IdRef, arg1);
-        try spirv.Builder.writeOperand(&operands, MemoryAccess, arg2);
+        try spirv.Builder.writeOperand(&operands, ?MemoryAccess, arg2);
         try self.insns.append(self.allocator, .{
             .op = 62,
             .operands = operands.toOwnedSlice(),
@@ -734,7 +735,7 @@ pub const instructions = struct {
         errdefer operands.deinit();
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
         try spirv.Builder.writeOperand(&operands, IdRef, arg1);
-        try spirv.Builder.writeOperand(&operands, MemoryAccess, arg2);
+        try spirv.Builder.writeOperand(&operands, ?MemoryAccess, arg2);
         try self.insns.append(self.allocator, .{
             .op = 63,
             .operands = operands.toOwnedSlice(),
@@ -747,7 +748,7 @@ pub const instructions = struct {
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
         try spirv.Builder.writeOperand(&operands, IdRef, arg1);
         try spirv.Builder.writeOperand(&operands, IdRef, arg2);
-        try spirv.Builder.writeOperand(&operands, MemoryAccess, arg3);
+        try spirv.Builder.writeOperand(&operands, ?MemoryAccess, arg3);
         try self.insns.append(self.allocator, .{
             .op = 64,
             .operands = operands.toOwnedSlice(),
@@ -761,7 +762,7 @@ pub const instructions = struct {
         try spirv.Builder.writeOperand(&operands, spirv.Id, result_type);
         try spirv.Builder.writeOperand(&operands, spirv.Id, result);
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
-        try spirv.Builder.writeOperand(&operands, IdRef, arg1);
+        try spirv.Builder.writeOperand(&operands, []const IdRef, arg1);
         try self.insns.append(self.allocator, .{
             .op = 65,
             .operands = operands.toOwnedSlice(),
@@ -776,7 +777,7 @@ pub const instructions = struct {
         try spirv.Builder.writeOperand(&operands, spirv.Id, result_type);
         try spirv.Builder.writeOperand(&operands, spirv.Id, result);
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
-        try spirv.Builder.writeOperand(&operands, IdRef, arg1);
+        try spirv.Builder.writeOperand(&operands, []const IdRef, arg1);
         try self.insns.append(self.allocator, .{
             .op = 66,
             .operands = operands.toOwnedSlice(),
@@ -792,7 +793,7 @@ pub const instructions = struct {
         try spirv.Builder.writeOperand(&operands, spirv.Id, result);
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
         try spirv.Builder.writeOperand(&operands, IdRef, arg1);
-        try spirv.Builder.writeOperand(&operands, IdRef, arg2);
+        try spirv.Builder.writeOperand(&operands, []const IdRef, arg2);
         try self.insns.append(self.allocator, .{
             .op = 67,
             .operands = operands.toOwnedSlice(),
@@ -837,7 +838,7 @@ pub const instructions = struct {
         try spirv.Builder.writeOperand(&operands, spirv.Id, result);
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
         try spirv.Builder.writeOperand(&operands, IdRef, arg1);
-        try spirv.Builder.writeOperand(&operands, IdRef, arg2);
+        try spirv.Builder.writeOperand(&operands, []const IdRef, arg2);
         try self.insns.append(self.allocator, .{
             .op = 70,
             .operands = operands.toOwnedSlice(),
@@ -884,7 +885,7 @@ pub const instructions = struct {
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
-        try spirv.Builder.writeOperand(&operands, IdRef, arg1);
+        try spirv.Builder.writeOperand(&operands, []const IdRef, arg1);
         try self.insns.append(self.allocator, .{
             .op = 74,
             .operands = operands.toOwnedSlice(),
@@ -895,7 +896,7 @@ pub const instructions = struct {
         var operands = std.ArrayList(spirv.Operand).init(self.allocator);
         errdefer operands.deinit();
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
-        try spirv.Builder.writeOperand(&operands, PairIdRefLiteralInteger, arg1);
+        try spirv.Builder.writeOperand(&operands, []const PairIdRefLiteralInteger, arg1);
         try self.insns.append(self.allocator, .{
             .op = 75,
             .operands = operands.toOwnedSlice(),
@@ -941,7 +942,7 @@ pub const instructions = struct {
         try spirv.Builder.writeOperand(&operands, spirv.Id, result);
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
         try spirv.Builder.writeOperand(&operands, IdRef, arg1);
-        try spirv.Builder.writeOperand(&operands, LiteralInteger, arg2);
+        try spirv.Builder.writeOperand(&operands, []const LiteralInteger, arg2);
         try self.insns.append(self.allocator, .{
             .op = 79,
             .operands = operands.toOwnedSlice(),
@@ -955,7 +956,7 @@ pub const instructions = struct {
         errdefer operands.deinit();
         try spirv.Builder.writeOperand(&operands, spirv.Id, result_type);
         try spirv.Builder.writeOperand(&operands, spirv.Id, result);
-        try spirv.Builder.writeOperand(&operands, IdRef, arg0);
+        try spirv.Builder.writeOperand(&operands, []const IdRef, arg0);
         try self.insns.append(self.allocator, .{
             .op = 80,
             .operands = operands.toOwnedSlice(),
@@ -970,7 +971,7 @@ pub const instructions = struct {
         try spirv.Builder.writeOperand(&operands, spirv.Id, result_type);
         try spirv.Builder.writeOperand(&operands, spirv.Id, result);
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
-        try spirv.Builder.writeOperand(&operands, LiteralInteger, arg1);
+        try spirv.Builder.writeOperand(&operands, []const LiteralInteger, arg1);
         try self.insns.append(self.allocator, .{
             .op = 81,
             .operands = operands.toOwnedSlice(),
@@ -986,7 +987,7 @@ pub const instructions = struct {
         try spirv.Builder.writeOperand(&operands, spirv.Id, result);
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
         try spirv.Builder.writeOperand(&operands, IdRef, arg1);
-        try spirv.Builder.writeOperand(&operands, LiteralInteger, arg2);
+        try spirv.Builder.writeOperand(&operands, []const LiteralInteger, arg2);
         try self.insns.append(self.allocator, .{
             .op = 82,
             .operands = operands.toOwnedSlice(),
@@ -1045,7 +1046,7 @@ pub const instructions = struct {
         try spirv.Builder.writeOperand(&operands, spirv.Id, result);
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
         try spirv.Builder.writeOperand(&operands, IdRef, arg1);
-        try spirv.Builder.writeOperand(&operands, ImageOperands, arg2);
+        try spirv.Builder.writeOperand(&operands, ?ImageOperands, arg2);
         try self.insns.append(self.allocator, .{
             .op = 87,
             .operands = operands.toOwnedSlice(),
@@ -1078,7 +1079,7 @@ pub const instructions = struct {
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
         try spirv.Builder.writeOperand(&operands, IdRef, arg1);
         try spirv.Builder.writeOperand(&operands, IdRef, arg2);
-        try spirv.Builder.writeOperand(&operands, ImageOperands, arg3);
+        try spirv.Builder.writeOperand(&operands, ?ImageOperands, arg3);
         try self.insns.append(self.allocator, .{
             .op = 89,
             .operands = operands.toOwnedSlice(),
@@ -1111,7 +1112,7 @@ pub const instructions = struct {
         try spirv.Builder.writeOperand(&operands, spirv.Id, result);
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
         try spirv.Builder.writeOperand(&operands, IdRef, arg1);
-        try spirv.Builder.writeOperand(&operands, ImageOperands, arg2);
+        try spirv.Builder.writeOperand(&operands, ?ImageOperands, arg2);
         try self.insns.append(self.allocator, .{
             .op = 91,
             .operands = operands.toOwnedSlice(),
@@ -1144,7 +1145,7 @@ pub const instructions = struct {
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
         try spirv.Builder.writeOperand(&operands, IdRef, arg1);
         try spirv.Builder.writeOperand(&operands, IdRef, arg2);
-        try spirv.Builder.writeOperand(&operands, ImageOperands, arg3);
+        try spirv.Builder.writeOperand(&operands, ?ImageOperands, arg3);
         try self.insns.append(self.allocator, .{
             .op = 93,
             .operands = operands.toOwnedSlice(),
@@ -1177,7 +1178,7 @@ pub const instructions = struct {
         try spirv.Builder.writeOperand(&operands, spirv.Id, result);
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
         try spirv.Builder.writeOperand(&operands, IdRef, arg1);
-        try spirv.Builder.writeOperand(&operands, ImageOperands, arg2);
+        try spirv.Builder.writeOperand(&operands, ?ImageOperands, arg2);
         try self.insns.append(self.allocator, .{
             .op = 95,
             .operands = operands.toOwnedSlice(),
@@ -1194,7 +1195,7 @@ pub const instructions = struct {
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
         try spirv.Builder.writeOperand(&operands, IdRef, arg1);
         try spirv.Builder.writeOperand(&operands, IdRef, arg2);
-        try spirv.Builder.writeOperand(&operands, ImageOperands, arg3);
+        try spirv.Builder.writeOperand(&operands, ?ImageOperands, arg3);
         try self.insns.append(self.allocator, .{
             .op = 96,
             .operands = operands.toOwnedSlice(),
@@ -1211,7 +1212,7 @@ pub const instructions = struct {
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
         try spirv.Builder.writeOperand(&operands, IdRef, arg1);
         try spirv.Builder.writeOperand(&operands, IdRef, arg2);
-        try spirv.Builder.writeOperand(&operands, ImageOperands, arg3);
+        try spirv.Builder.writeOperand(&operands, ?ImageOperands, arg3);
         try self.insns.append(self.allocator, .{
             .op = 97,
             .operands = operands.toOwnedSlice(),
@@ -1227,7 +1228,7 @@ pub const instructions = struct {
         try spirv.Builder.writeOperand(&operands, spirv.Id, result);
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
         try spirv.Builder.writeOperand(&operands, IdRef, arg1);
-        try spirv.Builder.writeOperand(&operands, ImageOperands, arg2);
+        try spirv.Builder.writeOperand(&operands, ?ImageOperands, arg2);
         try self.insns.append(self.allocator, .{
             .op = 98,
             .operands = operands.toOwnedSlice(),
@@ -1241,7 +1242,7 @@ pub const instructions = struct {
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
         try spirv.Builder.writeOperand(&operands, IdRef, arg1);
         try spirv.Builder.writeOperand(&operands, IdRef, arg2);
-        try spirv.Builder.writeOperand(&operands, ImageOperands, arg3);
+        try spirv.Builder.writeOperand(&operands, ?ImageOperands, arg3);
         try self.insns.append(self.allocator, .{
             .op = 99,
             .operands = operands.toOwnedSlice(),
@@ -3196,7 +3197,7 @@ pub const instructions = struct {
         errdefer operands.deinit();
         try spirv.Builder.writeOperand(&operands, spirv.Id, result_type);
         try spirv.Builder.writeOperand(&operands, spirv.Id, result);
-        try spirv.Builder.writeOperand(&operands, PairIdRefIdRef, arg0);
+        try spirv.Builder.writeOperand(&operands, []const PairIdRefIdRef, arg0);
         try self.insns.append(self.allocator, .{
             .op = 245,
             .operands = operands.toOwnedSlice(),
@@ -3255,7 +3256,7 @@ pub const instructions = struct {
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
         try spirv.Builder.writeOperand(&operands, IdRef, arg1);
         try spirv.Builder.writeOperand(&operands, IdRef, arg2);
-        try spirv.Builder.writeOperand(&operands, LiteralInteger, arg3);
+        try spirv.Builder.writeOperand(&operands, []const LiteralInteger, arg3);
         try self.insns.append(self.allocator, .{
             .op = 250,
             .operands = operands.toOwnedSlice(),
@@ -3267,7 +3268,7 @@ pub const instructions = struct {
         errdefer operands.deinit();
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
         try spirv.Builder.writeOperand(&operands, IdRef, arg1);
-        try spirv.Builder.writeOperand(&operands, PairLiteralIntegerIdRef, arg2);
+        try spirv.Builder.writeOperand(&operands, []const PairLiteralIntegerIdRef, arg2);
         try self.insns.append(self.allocator, .{
             .op = 251,
             .operands = operands.toOwnedSlice(),
@@ -3813,7 +3814,7 @@ pub const instructions = struct {
         try spirv.Builder.writeOperand(&operands, IdRef, arg7);
         try spirv.Builder.writeOperand(&operands, IdRef, arg8);
         try spirv.Builder.writeOperand(&operands, IdRef, arg9);
-        try spirv.Builder.writeOperand(&operands, IdRef, arg10);
+        try spirv.Builder.writeOperand(&operands, []const IdRef, arg10);
         try self.insns.append(self.allocator, .{
             .op = 292,
             .operands = operands.toOwnedSlice(),
@@ -3998,7 +3999,7 @@ pub const instructions = struct {
         try spirv.Builder.writeOperand(&operands, spirv.Id, result);
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
         try spirv.Builder.writeOperand(&operands, IdRef, arg1);
-        try spirv.Builder.writeOperand(&operands, ImageOperands, arg2);
+        try spirv.Builder.writeOperand(&operands, ?ImageOperands, arg2);
         try self.insns.append(self.allocator, .{
             .op = 305,
             .operands = operands.toOwnedSlice(),
@@ -4031,7 +4032,7 @@ pub const instructions = struct {
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
         try spirv.Builder.writeOperand(&operands, IdRef, arg1);
         try spirv.Builder.writeOperand(&operands, IdRef, arg2);
-        try spirv.Builder.writeOperand(&operands, ImageOperands, arg3);
+        try spirv.Builder.writeOperand(&operands, ?ImageOperands, arg3);
         try self.insns.append(self.allocator, .{
             .op = 307,
             .operands = operands.toOwnedSlice(),
@@ -4064,7 +4065,7 @@ pub const instructions = struct {
         try spirv.Builder.writeOperand(&operands, spirv.Id, result);
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
         try spirv.Builder.writeOperand(&operands, IdRef, arg1);
-        try spirv.Builder.writeOperand(&operands, ImageOperands, arg2);
+        try spirv.Builder.writeOperand(&operands, ?ImageOperands, arg2);
         try self.insns.append(self.allocator, .{
             .op = 309,
             .operands = operands.toOwnedSlice(),
@@ -4097,7 +4098,7 @@ pub const instructions = struct {
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
         try spirv.Builder.writeOperand(&operands, IdRef, arg1);
         try spirv.Builder.writeOperand(&operands, IdRef, arg2);
-        try spirv.Builder.writeOperand(&operands, ImageOperands, arg3);
+        try spirv.Builder.writeOperand(&operands, ?ImageOperands, arg3);
         try self.insns.append(self.allocator, .{
             .op = 311,
             .operands = operands.toOwnedSlice(),
@@ -4130,7 +4131,7 @@ pub const instructions = struct {
         try spirv.Builder.writeOperand(&operands, spirv.Id, result);
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
         try spirv.Builder.writeOperand(&operands, IdRef, arg1);
-        try spirv.Builder.writeOperand(&operands, ImageOperands, arg2);
+        try spirv.Builder.writeOperand(&operands, ?ImageOperands, arg2);
         try self.insns.append(self.allocator, .{
             .op = 313,
             .operands = operands.toOwnedSlice(),
@@ -4147,7 +4148,7 @@ pub const instructions = struct {
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
         try spirv.Builder.writeOperand(&operands, IdRef, arg1);
         try spirv.Builder.writeOperand(&operands, IdRef, arg2);
-        try spirv.Builder.writeOperand(&operands, ImageOperands, arg3);
+        try spirv.Builder.writeOperand(&operands, ?ImageOperands, arg3);
         try self.insns.append(self.allocator, .{
             .op = 314,
             .operands = operands.toOwnedSlice(),
@@ -4164,7 +4165,7 @@ pub const instructions = struct {
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
         try spirv.Builder.writeOperand(&operands, IdRef, arg1);
         try spirv.Builder.writeOperand(&operands, IdRef, arg2);
-        try spirv.Builder.writeOperand(&operands, ImageOperands, arg3);
+        try spirv.Builder.writeOperand(&operands, ?ImageOperands, arg3);
         try self.insns.append(self.allocator, .{
             .op = 315,
             .operands = operands.toOwnedSlice(),
@@ -4231,7 +4232,7 @@ pub const instructions = struct {
         try spirv.Builder.writeOperand(&operands, spirv.Id, result);
         try spirv.Builder.writeOperand(&operands, IdRef, arg0);
         try spirv.Builder.writeOperand(&operands, IdRef, arg1);
-        try spirv.Builder.writeOperand(&operands, ImageOperands, arg2);
+        try spirv.Builder.writeOperand(&operands, ?ImageOperands, arg2);
         try self.insns.append(self.allocator, .{
             .op = 320,
             .operands = operands.toOwnedSlice(),

@@ -1,5 +1,6 @@
 const std = @import("std");
 const core = @import("gen/core.zig");
+const glsl = @import("gen/glsl.zig");
 
 pub const Builder = struct {
     allocator: *std.mem.Allocator,
@@ -75,6 +76,7 @@ pub const Builder = struct {
     }
 
     pub usingnamespace core.instructions;
+    pub usingnamespace glsl.instructions;
 
     pub fn build(self: Builder, buf: *std.ArrayList(u32)) !void {
         try buf.append(core.magic_number); // Magic

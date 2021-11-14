@@ -9,6 +9,7 @@ import sys
 from dataclasses import dataclass
 
 CORE_URL = 'https://github.com/KhronosGroup/SPIRV-Headers/raw/master/include/spirv/1.0/spirv.core.grammar.json'
+GLSL_URL = 'https://github.com/KhronosGroup/SPIRV-Headers/raw/master/include/spirv/1.0/extinst.glsl.std.450.grammar.json'
 
 NORMALIZE_WORDS = [
 	# Acronyms
@@ -209,13 +210,12 @@ class LiteralType(BaseType):
 		super().__init__(spec)
 
 	def zig_type(self):
-		match self.name:
-			case "LiteralInteger":
-				ty = "u64"
-			case "LiteralString":
-				ty = "[]const u8"
-			case _:
-				ty = '@compileError("TODO")'
+		if self.name == "LiteralInteger":
+			ty = "u64"
+		elif self.name == "LiteralString":
+			ty = "[]const u8"
+		else:
+			ty = '@compileError("TODO")'
 		return f'{self.type_def()} = {ty};'
 
 class CompositeType(BaseType):
@@ -234,20 +234,30 @@ TYPE_CATEGORIES = {
 	"Composite": CompositeType,
 }
 
-def gen(url, f):
+def gen(url, f, core=True):
 	f.write('const std = @import("std");\n');
 	f.write('const spirv = @import("../spirv.zig");\n');
 
-	spec = requests.get(CORE_URL).json()
-	f.write(f'pub const magic_number = {spec["magic_number"]};\n')
-	f.write(f'pub const version = ({spec["major_version"]} << 16) | ({spec["minor_version"]} << 8);\n')
+	spec = requests.get(url).json()
+	if core:
+		f.write('\n');
+		f.write(f'pub const magic_number = {spec["magic_number"]};\n')
+		f.write(f'pub const version = ({spec["major_version"]} << 16) | ({spec["minor_version"]} << 8);\n')
+	else:
+		f.write('const core = @import("core.zig");\n')
 	f.write('\n');
+
+	types = {}
+	for type_spec in spec.get("operand_kinds", []):
+		cls = TYPE_CATEGORIES[type_spec["category"]]
+		types[type_spec["kind"]] = cls(type_spec)
 
 	f.write('pub const instructions = struct {\n')
 	for insn in spec["instructions"]:
 		name = insn["opname"]
-		assert name.startswith("Op")
-		name = format_id(to_camel_case(name[2:]))
+		if name.startswith("Op"):
+			name = name[2:]
+		name = format_id(to_camel_case(name))
 
 		operands = insn.get("operands", [])
 		has_type = operands and operands[0]["kind"] == "IdResultType"
@@ -257,15 +267,20 @@ def gen(url, f):
 		if has_result:
 			operands = operands[1:]
 
-		f.write(f'pub fn {name}(self: *spirv.Builder')
-		if has_type:
-			f.write(', result_type: spirv.Id')
 		for i, op in enumerate(operands):
 			ty = op["kind"]
+			if (not core) and (ty not in types):
+				ty = "core." + ty
 			if op.get("quantifier") == "?":
 				ty = "?" + ty
 			elif op.get("quantifier") == "*":
 				ty = "[]const " + ty
+			operands[i] = ty
+
+		f.write(f'pub fn {name}(self: *spirv.Builder')
+		if has_type:
+			f.write(', result_type: spirv.Id')
+		for i, ty in enumerate(operands):
 			f.write(f', arg{i}: {ty}')
 		f.write(') !')
 		if has_result:
@@ -281,8 +296,8 @@ def gen(url, f):
 		if has_result:
 			f.write('try spirv.Builder.writeOperand(&operands, spirv.Id, result);\n')
 
-		for i, op in enumerate(operands):
-			f.write(f'try spirv.Builder.writeOperand(&operands, {op["kind"]}, arg{i});\n')
+		for i, ty in enumerate(operands):
+			f.write(f'try spirv.Builder.writeOperand(&operands, {ty}, arg{i});\n')
 
 		f.write('try self.insns.append(self.allocator, .{\n')
 		f.write(f'.op = {insn["opcode"]},\n')
@@ -293,9 +308,7 @@ def gen(url, f):
 		f.write('}\n\n')
 	f.write('};\n\n')
 
-	for type_spec in spec["operand_kinds"]:
-		cls = TYPE_CATEGORIES[type_spec["category"]]
-		ty = cls(type_spec)
+	for ty in types.values():
 		f.write(ty.zig_type())
 		f.write('\n\n')
 
@@ -303,4 +316,6 @@ if __name__ == '__main__':
 	os.chdir(os.path.join(os.path.dirname(sys.argv[0]), "..", "src", "gen"))
 	with open('core.zig', 'w') as f:
 		gen(CORE_URL, f)
+	with open('glsl.zig', 'w') as f:
+		gen(GLSL_URL, f, core=False)
 	subprocess.call(['zig', 'fmt', '.'], stdout=subprocess.DEVNULL)
