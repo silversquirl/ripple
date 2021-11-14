@@ -20,4 +20,5 @@ pub fn build(b: *std.build.Builder) void {
 
     const test_step = b.step("test", "Run unit tests");
     test_step.dependOn(&b.addTest("src/spirv.zig").step);
+    test_step.dependOn(&b.addTest("src/tokenizer.zig").step);
 }
