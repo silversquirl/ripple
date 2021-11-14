@@ -17,4 +17,7 @@ pub fn build(b: *std.build.Builder) void {
 
     const run_step = b.step("run", "Run the compiler");
     run_step.dependOn(&run_cmd.step);
+
+    const test_step = b.step("test", "Run unit tests");
+    test_step.dependOn(&b.addTest("src/spirv.zig").step);
 }
