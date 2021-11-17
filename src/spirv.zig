@@ -1,6 +1,6 @@
 const std = @import("std");
-const core = @import("gen/core.zig");
-const glsl = @import("gen/glsl.zig");
+pub const core = @import("gen/core.zig");
+pub const glsl = @import("gen/glsl.zig");
 
 pub const Builder = struct {
     allocator: *std.mem.Allocator,
